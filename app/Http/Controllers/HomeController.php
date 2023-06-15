@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     //
     public function displayHomepage() {
-        return response('JANDRA HOMEPAGE');
+        return view('pages.homepage');
     }
 }
