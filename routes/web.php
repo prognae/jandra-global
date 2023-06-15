@@ -16,3 +16,11 @@ use App\Http\Controllers\HomeController;
 
 //Homepage Routes
 Route::get('/', [HomeController::class, 'displayHomepage']);
+
+Route::get('/shop', [HomeController::class, 'displayShop']);
+
+Route::get('/showcase', [HomeController::class, 'displayShowcase']);
+
+Route::get('/blog', [HomeController::class, 'displayBlog']);
+
+Route::get('/about', [HomeController::class, 'displayAbout']);

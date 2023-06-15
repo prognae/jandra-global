@@ -10,4 +10,24 @@ class HomeController extends Controller
     public function displayHomepage() {
         return view('pages.homepage');
     }
+
+    public function displayShop() {
+        return view('pages.shop');
+    }
+
+    public function displayShowcase() {
+        return view('pages.showcase');
+    }
+
+    public function displayBlog() {
+        return view('pages.blog');
+    }
+
+    public function displayAbout() {
+        return view('pages.about');
+    }
+
+    public function displayMask() {
+        return view('pages.homepage');
+    }
 }
