@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::get('/showcase', [HomeController::class, 'displayShowcase']);
 Route::get('/blog', [HomeController::class, 'displayBlog']);
 
 Route::get('/about', [HomeController::class, 'displayAbout']);
+
+//Admin routes
+Route::get('/admin/dashboard', [AdminController::class, 'displayDashboard']);
