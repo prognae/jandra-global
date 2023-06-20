@@ -28,3 +28,7 @@ Route::get('/about', [HomeController::class, 'displayAbout']);
 
 //Admin routes
 Route::get('/admin/dashboard', [AdminController::class, 'displayDashboard']);
+
+Route::get('/admin/dashboard/item/add', [AdminController::class, 'displayListItem']);
+
+Route::get('/admin/dashboard/item/view', [AdminController::class, 'displayListedItems']);
