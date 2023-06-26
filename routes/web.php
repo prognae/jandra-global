@@ -27,8 +27,15 @@ Route::get('/blog', [HomeController::class, 'displayBlog']);
 Route::get('/about', [HomeController::class, 'displayAbout']);
 
 //Admin routes
-Route::get('/admin/dashboard', [AdminController::class, 'displayDashboard']);
 
-Route::get('/admin/dashboard/item/add', [AdminController::class, 'displayListItem']);
 
-Route::get('/admin/dashboard/item/view', [AdminController::class, 'displayListedItems']);
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('dashboard', [AdminController::class, 'displayDashboard']);
+    Route::get('dashboard/item/add', [AdminController::class, 'displayListItem']);
+    Route::get('dashboard/item/view', [AdminController::class, 'displayListedItems']);
+
+    Route::post('dashboard/item/admin/seller/insert', [AdminController::class, 'create']);
+
+
+
+});

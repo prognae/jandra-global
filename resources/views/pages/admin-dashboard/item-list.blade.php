@@ -13,14 +13,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>    
+    
+   <!-- Material Icons -->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+   <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+   <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
 
 </head>
 <body>   
 	@include('templates.dashboard_sidebar')
     <div class="container d-flex justify-content-center mt-50 mb-50 ms-10">
         <h2 style="text-align: center; margin-bottom: 50px;"> New Listing</h2>
-        <form action="/seller/insert" method="post">
-        <h4 style="text-align: left;">Add photos</h4>
+        <form action="admin/seller/insert" method="post">
+         @csrf
+        <h4 style="text-align: left;">  Add photos</h4>
         <div class="container-box">
             <div class="wrapper">
                <div class="image">
@@ -44,36 +50,34 @@
             <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
             <input id="imageFile" name="imageFile" type="file" accept="image" hidden><br><br>
             <input type="hidden" id="imageFileb64" name="imageFileb64">
-            <!-- <button type="submit">Submit</button> -->
+            
             <h4 style="text-align: left;">Listing Title</h4>
-            <input type="text" class="form-control" id="title" name="item_name" placeholder="Item Name" required>	
-            <h4 style="text-align: left;">Description</h4>
-            <input type="text" class="form-control" id="title" name="description" placeholder="Description" required>	
+            <input type="text" class="form-control" id="title" name="name" placeholder="Item Name" required>	
+
             <h4 style="text-align: left;">Category</h4>
             <select class="form-select form-select-lg" name="category">
-                <option>Gowns & Suits</option>
-                <option>Musical Instrument</option>
-                <option>Tools</option>
-                <option>Books</option>
-                <option>Entertainment</option>
-                <option>Film And Photography</option>
-                <option>Drones</option>
-                <option>Projectors</option>
-                <option>Costumes</option>
-                <option>Camping Tents</option>
-                <option>Furnitures</option>
+                <option>Dental Supply</option>
+                <option>Figurines</option>
+                <option>Lab Gowns</option>
+                <option>Masks</option>
+                <option>Medicines</option>
+                <option>Stuffed Toys</option>
+                <option>Others</option>
             </select>
-            <h4 style="text-align: left; margin-top: 18px;">Rental Price (per day) (₱)</h4>
-            <input type="text" class="form-control" id="rentalprice" name="rental_rate" placeholder="Rental Price" required>	
-            <!-- <h4 style="text-align: left; margin-top: 18px;">Item Value (₱)</h4>
-            <input type="text" class="form-control" id="itemvalue" name="itemvalue" placeholder="Item Value" required>	 -->
-            <h4 style="text-align: left; margin-top: 18px;">Replacement Cost (Deposit) (₱)</h4>
-            <input type="text" class="form-control" id="replacement_cost" name="replacement_cost" placeholder="Replacement Cost" required>	
-            <h4 style="text-align: left; margin-top: 18px;">Quantity</h4>
-            <input type="number" class="form-control" id="Quantity" name="quantity" placeholder="Quantity" min="1" required>	
-            
-            <button type="submit" id="custom-btn">Post</button> 
-            <a style="text-decoration:none;" href="/"><button type="button" id="custom-btn">Cancel</button></a>
+
+            <h4 style="text-align: left;">Listing Price (₱)</h4>
+            <input type="text" class="form-control" id="listingprice" name="price" placeholder="Listing Price" required>	
+ 
+            <h4 style="text-align: left;">Description</h4>
+            <input type="text" class="form-control" id="title" name="description" placeholder="Description" required>	
+
+            <h4 style="text-align: left;">Quantity</h4>
+            <input style="width: 300px; height: 40px;" type="number" class="form-control" id="Quantity" name="quantity" placeholder="      Quantity" min="1" required>	
+                       
+            <button style="" type="submit" id="custom-btn" onclick="window.location.href='/admin/dashboard';">Post</button> 
+            <button type="button" id="custom-btn" onclick="window.location.href='/admin/dashboard';">Cancel</button>
+
+
             </div>
             
         </form>
@@ -96,8 +100,16 @@
       }
 
       document.querySelector("#imageFile").addEventListener("change", readFile);
+
+      @if (session('success'))
+         <script>
+            alert("{{ session('success') }}");
+         </script>
+      @endif
+
       
 </script>
+
 
 
 </html>
