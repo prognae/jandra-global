@@ -24,7 +24,7 @@
 	@include('templates.dashboard_sidebar')
     <div class="container d-flex justify-content-center mt-50 mb-50 ms-10">
         <h2 style="text-align: center; margin-bottom: 50px;"> New Listing</h2>
-        <form action="admin/seller/insert" method="post">
+        <form action="/admin/dashboard/item/add" method="post">
          @csrf
         <h4 style="text-align: left;">  Add photos</h4>
         <div class="container-box">
@@ -71,10 +71,13 @@
             <h4 style="text-align: left;">Description</h4>
             <input type="text" class="form-control" id="title" name="description" placeholder="Description" required>	
 
+            <h4 style="text-align: left;">Shop Link</h4>
+            <input type="url" class="form-control" id="title" name="shop_link" placeholder="Shop Link" required>	
+
             <h4 style="text-align: left;">Quantity</h4>
-            <input style="width: 300px; height: 40px;" type="number" class="form-control" id="Quantity" name="quantity" placeholder="      Quantity" min="1" required>	
+            <input  type="number" class="form-control" id="Quantity" name="quantity" placeholder="Quantity" min="1" required>	
                        
-            <button style="" type="submit" id="custom-btn" onclick="window.location.href='/admin/dashboard';">Post</button> 
+            <button style="" type="submit" id="custom-btn">Post</button> 
             <button type="button" id="custom-btn" onclick="window.location.href='/admin/dashboard';">Cancel</button>
 
 

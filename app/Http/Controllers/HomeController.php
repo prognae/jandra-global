@@ -9,11 +9,7 @@ class HomeController extends Controller
     //
     public function displayHomepage() {
         return view('pages.homepage');
-    }
-
-    public function displayShop() {
-        return view('pages.shop');
-    }
+    }    
 
     public function displayShowcase() {
         return view('pages.showcase');
