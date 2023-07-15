@@ -1,131 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
 
-    <!-- favicon -->
-    <link rel="shortcut icon" href="img/favlogo.ico" type="image/x-icon">
-    <link rel="icon" href="img/favlogo.ico" type="image/x-icon">
+    <title>Tables - Product</title>
 
-    <title>Jandra Global</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <link rel="stylesheet" href="/css/itemlist-forms.css" type="text/css"> 
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script> 
+    <meta name="description" content="" />
 
-    <!-- Include your CSS stylesheet -->
-    <link rel="stylesheet" href="/css/itemlist-forms.css" type="text/css"> 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/jandra.png" />
 
-    <!-- Include any necessary JavaScript libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>  
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
-    <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>  
+    <!-- Designing -->
+    <link rel="stylesheet" href="/css/admin-table/boxicons.css" />
 
-</head>
-<body>
-    @include('templates.dashboard_sidebar')
-    <div class="container d-flex justify-content-center mt-50 mb-50 ms-10">
-        <h2 style="text-align: center; margin-bottom: 50px;">Listed Products</h2>
+    <link rel="stylesheet" href="/css/admin-table/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/css/admin-table/theme-default.css" class="template-customizer-theme-css" />
+   
+  <body>
+    <div class="layout-wrapper layout-content-navbar">
 
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="text-center">Select</th>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Category</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Quantity</th>
-                        <th class="text-center">Description</th>
-                        <th class="text-center">Image URL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($products as $product)
-                        <tr>
-                            <td class="text-center">
-                                <input type="checkbox" name="selectedItems[]" value="{{ $product['id'] }}">
-                            </td>
-                            <td class="text-center">{{ $product['name'] }}</td>
-                            <td class="text-center">{{ $product['category'] }}</td>
-                            <td class="text-center">{{ $product['price'] }}</td>
-                            <td class="text-center">{{ $product['quantity'] }}</td>
-                            <td class="text-center">{{ $product['description'] }}</td>
-                            <td class="text-center">{{ $product['imageFile'] }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
 
-            <div class="text-center">
-                <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
-                <button class="btn btn-primary" onclick="redirectToEdit()">Edit</button>
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Products</h4>
+              <div class="demo-inline-spacing mb-4">
+              <button type="button" class="btn btn-primary">
+                <span class="tf-icons bx bx-plus"></span>&nbsp; Add Item
+              </button>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Sort Items
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="javascript:void(0);">By Name (A-Z)</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0);">By Name (Z-A)</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0);">By Price (Highest to Lowest)</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0);">By Price (Lowest to Highest)</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0);">By Category Name</a></li>
+                </ul>
+              </div>
+              </div>
+
+              <!-- Responsive Table -->
+              <div class="card">
+                <h5 class="card-header" style="text-align: center;">Product List</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr class="text-nowrap">
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Product Image</th>
+                        <th>Category</th>
+                        <th>Listing Price</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($products as $product)
+                            <tr>
+                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>
+                                    <img src="{{ $product->image_file }}" class="item-size" alt="">
+                                </td>
+                                <td>{{ $product->category }}</td>
+                                <td>₱ {{ $product->price }}</td>
+                                <td style="max-width: 200px; overflow:hidden; text-overflow:ellipsis; white-space: nowrap;">
+                                    {{ $product->description }}
+                                </td>
+                                <th>
+                                    <div class="demo-inline-spacing">
+                                        <button type="button" title="Edit Item Details" class="btn btn-icon btn-primary">
+                                        <span class="tf-icons bx bx-edit"></span>
+                                        </button>
+                                        <button type="button" title="Delete Item" class="btn btn-icon btn-secondary">
+                                        <span class="tf-icons bx bx-trash"></span>
+                                        </button>
+                                    </div>
+                                </th>
+                            </tr>
+                        @endforeach                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!--/ Responsive Table -->
+              <!-- Pagination -->
+              <div class="container-xl container-p-y" style="padding-left: 500px;"></div>
+              <nav aria-label="Page navigation">
+                <ul class="pagination pagination-sm">
+                  <li class="page-item prev">
+                    <a class="page-link" href="javascript:void(0);"
+                      ><i class="tf-icon bx bx-chevrons-left"></i
+                    ></a>
+                  </li>
+                  <li class="page-item next">
+                    <a class="page-link" href="javascript:void(0);"
+                      ><i class="tf-icon bx bx-chevron-left"></i
+                    ></a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="javascript:void(0);">1</a>
+                  </li>
+                  <li class="page-item next">
+                    <a class="page-link" href="javascript:void(0);"
+                      ><i class="tf-icon bx bx-chevron-right"></i
+                    ></a>
+                  </li>
+                  <li class="page-item next">
+                    <a class="page-link" href="javascript:void(0);"
+                      ><i class="tf-icon bx bx-chevrons-right"></i
+                    ></a>
+                  </li>
+                </ul>
+              </nav>
             </div>
+            <!-- / Pagination -->
+            </div>
+          </div>
         </div>
 
-    </div>
-    <div class="footer">
+      </div>
 
-    </div>
-    <script src="/js/itemlist-forms.js"></script>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        .btn {
-            margin-top: 10px;
-            margin-right: 5px;
-            padding: 8px 16px;
-            font-size: 16px;
-        }
-    </style>
-
-
-
-    <script>
-        // Function to confirm delete action
-        function confirmDelete() {
-            var selectedItems = [];
-            $('input[type="checkbox"]:checked').each(function() {
-                selectedItems.push($(this).val());
-            });
-
-            if (selectedItems.length > 0) {
-                if (confirm("Are you sure you want to delete the selected items?")) {
-                    // Perform the delete action here
-                    // You can redirect or send an AJAX request to delete the items
-                    // Example: window.location.href = '/delete-items/' + selectedItems.join(',');
-                }
-            } else {
-                alert("Please select at least one item to delete.");
-            }
-        }
-
-        // Function to redirect to edit item page
-        function redirectToEdit(itemId) {
-            // Redirect to the edit item page with the specific item ID
-            // Example: window.location.href = '/edit-item/' + itemId;
-        }
-    </script>
-
-
-</body>
+    <script src="/js/admin-table/bootstrap.js"></script>
+  </body>
 </html>

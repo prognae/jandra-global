@@ -61,8 +61,7 @@ class AdminController extends Controller
         // return view('pages.admin-dashboard.listed-items');
 
         // $products = Product::all();
-        $products = DB::select("SELECT * FROM public.test");
-        dd($products);
+        $products = DB::select("SELECT * FROM public.products");
 
         return view('pages.admin-dashboard.listed-items', ['products' => $products]);
 
