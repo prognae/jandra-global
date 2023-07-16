@@ -10,14 +10,15 @@
   rel="stylesheet">
 
   <!-- Css Styles -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-  <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-  <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+
 </head>
 <body>
     
@@ -100,53 +101,15 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
-                                                    <li ><a href="#">Dental Supplies (20)</a></li>
-                                                    <li><a href="stuffedtoys-shop.html">Stuffed Toys (20)</a></li>
-                                                    <li><a href="#">Masks (20)</a></li>
-                                                    <li><a href="#">Medicines (20)</a></li>
-                                                    <li><a href="#">Lab Gown (20)</a></li>
-                                                    <li><a href="#">Figurines (20)</a></li>
+                                                    <li ><a href="/shop">All Items</a></li>
+                                                    <li ><a href="/shop/Dental Supplies">Dental Supplies</a></li>
+                                                    <li><a href="/shop/Stuffed Toys">Stuffed Toys</a></li>
+                                                    <li><a href="/shop/Masks">Masks</a></li>
+                                                    <li><a href="/shop/Medicines">Medicines</a></li>
+                                                    <li><a href="/shop/Lab Gowns">Lab Gown</a></li>
+                                                    <li><a href="/shop/Figurines">Figurines</a></li>
+                                                    <li><a href="/shop/Others">Others</a></li>
                                                 </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">Colors</a>
-                                    </div>
-                                    <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__color">
-                                                <label class="c-1" for="sp-1">
-                                                    <input type="radio" id="sp-1">
-                                                </label>
-                                                <label class="c-2" for="sp-2">
-                                                    <input type="radio" id="sp-2">
-                                                </label>
-                                                <label class="c-3" for="sp-3">
-                                                    <input type="radio" id="sp-3">
-                                                </label>
-                                                <label class="c-4" for="sp-4">
-                                                    <input type="radio" id="sp-4">
-                                                </label>
-                                                <label class="c-5" for="sp-5">
-                                                    <input type="radio" id="sp-5">
-                                                </label>
-                                                <label class="c-6" for="sp-6">
-                                                    <input type="radio" id="sp-6">
-                                                </label>
-                                                <label class="c-7" for="sp-7">
-                                                    <input type="radio" id="sp-7">
-                                                </label>
-                                                <label class="c-8" for="sp-8">
-                                                    <input type="radio" id="sp-8">
-                                                </label>
-                                                <label class="c-9" for="sp-9">
-                                                    <input type="radio" id="sp-9">
-                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -251,15 +214,16 @@
 
 
    <!-- Js Plugins -->
-   <script src="js/jquery-3.3.1.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/jquery.nice-select.min.js"></script>
-   <script src="js/jquery.nicescroll.min.js"></script>
-   <script src="js/jquery.magnific-popup.min.js"></script>
-   <script src="js/jquery.countdown.min.js"></script>
-   <script src="js/jquery.slicknav.js"></script>
-   <script src="js/mixitup.min.js"></script>
-   <script src="js/owl.carousel.min.js"></script>
-   <script src="js/main.js"></script>
+   <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
+<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('js/jquery.slicknav.js') }}"></script>
+<script src="{{ asset('js/mixitup.min.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+
 </body>
 </html>

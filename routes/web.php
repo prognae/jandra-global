@@ -19,7 +19,7 @@ use App\Http\Controllers\AdminController;
 //Homepage Routes
 Route::get('/', [HomeController::class, 'displayHomepage']);
 
-Route::get('/shop', [ShopController::class, 'displayShop']);
+Route::get('/shop/{category?}', [ShopController::class, 'displayShop']);
 
 Route::get('/showcase', [HomeController::class, 'displayShowcase']);
 
