@@ -100,6 +100,11 @@
     }
 }
 
+.header__logo img {
+    width: 196px; /* Adjust the width to your desired size */
+    height: 23px; /* Maintain the aspect ratio */
+}
+
 .header__menu {
     text-align: center;
     padding: 26px 0 25px;

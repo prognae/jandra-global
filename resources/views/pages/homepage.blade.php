@@ -82,7 +82,7 @@
                 <h6>Welcome to</h6>
                 <h2>Jandra Global Traders Corp.</h2>
                 <p>Discover high-quality White - Jandra Surgical Masks for superior protection and comfort.</p>
-                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
                   <a href="#"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>
@@ -104,7 +104,7 @@
                 <h6>Introducing</h6>
                 <h2>Janda Limited Edition</h2>
                 <p>Discover the stylish and durable Black - ND99 Surgical Mask for ultimate protection and fashion.</p>
-                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
                   <a href="#"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>
@@ -126,7 +126,7 @@
                 <h6>Discover</h6>
                 <h2>Jandra Kids Collection</h2>
                 <p>Explore our fun and colorful collection of surgical masks specially designed for kids.</p>
-                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
                   <a href="#"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>
@@ -146,9 +146,10 @@
             <div class="col-xl-5 col-lg-7 col-md-8">
               <div class="hero__text">
                 <h6>Experience</h6>
-                <h2>Jandra Sports Collection</h2>
-                <p>Stay protected and active with our sports-oriented surgical masks designed for active individuals.</p>
-                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                <h2>Jandra Lab Gown Collection</h2>
+                <p>Stay protected and comfortable with our high-quality lab gowns designed for laboratory professionals and medical personnel.</p>
+
+                <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
                   <a href="#"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>
@@ -168,14 +169,15 @@
             <div class="col-xl-5 col-lg-7 col-md-8">
               <div class="hero__text">
                 <h6>Discover</h6>
-                <h2>Jandra Designer Collection</h2>
-                <p>Explore our exclusive collection of designer surgical masks for a touch of elegance and style.</p>
-                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                <h2>Jandra Dental Figurine Collection</h2>
+                <p>Explore our unique collection of dental-themed figurines, showcasing the artistry and beauty of dentistry in intricate designs.</p>
+
+                <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
-                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="https://www.facebook.com/Jandra.PH"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>
                   <a href="#"><i class="fa fa-pinterest"></i></a>
-                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.instagram.com/jandra.ph/?hl=en"><i class="fa fa-instagram"></i></a>
                 </div>
               </div>
             </div>
@@ -187,51 +189,26 @@
   </section>
 <!-- Hero Section End -->
 
-<!-- Gallery -->
-<div class="row">
-    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Boat on Calm Water"
-      />
-  
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Wintry Mountain Landscape"
-      />
-    </div>
-  
-    <div class="col-lg-4 mb-4 mb-lg-0">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Mountains in the Clouds"
-      />
-  
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Boat on Calm Water"
-      />
-    </div>
-  
-    <div class="col-lg-4 mb-4 mb-lg-0">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Waves at Sea"
-      />
-  
-      <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp"
-        class="w-100 shadow-1-strong rounded mb-4"
-        alt="Yosemite National Park"
-      />
+  <!-- Gallery Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+        <img src="img/gallery/Photo_2.png" class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water">
+        <img src="img/gallery/Photo_1.png" class="w-100 shadow-1-strong rounded mb-4" alt="Wintry Mountain Landscape">
+      </div>
+
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <img src="img/gallery/Photo_4.png" class="w-100 shadow-1-strong rounded mb-4" alt="Mountains in the Clouds">
+        <img src="img/gallery/Photo_3.png" class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water">
+      </div>
+
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <img src="img/gallery/Photo_5.png" class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea">
+        <img src="img/gallery/Photo_6.png" class="w-100 shadow-1-strong rounded mb-4" alt="Yosemite National Park">
+      </div>
     </div>
   </div>
-  <!-- Gallery -->
+  <!-- Gallery End -->
 
 
     <!-- Banner Section Begin -->
@@ -284,7 +261,6 @@
                         <ul class="filter__controls">
                             <li class="active" data-filter="*">Best Sellers</li>
                             <li data-filter=".new-arrivals">New Arrivals</li>
-                            <li data-filter=".hot-sales">Hot Sales</li>
                         </ul>
                     </div>
                 </div>
