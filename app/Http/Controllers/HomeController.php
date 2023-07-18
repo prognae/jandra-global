@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     //
     public function displayHomepage() {
-        $newArrivals = DB::select('SELECT * FROM public.products ORDER BY updated_at LIMIT 4');
+        $newArrivals = DB::select('SELECT * FROM public.products ORDER BY updated_at DESC LIMIT 4');
         return view('pages.homepage', ['newArrivals'=>$newArrivals]);
     }    
 
