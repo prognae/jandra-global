@@ -21,6 +21,8 @@ Route::get('/', [HomeController::class, 'displayHomepage']);
 
 Route::get('/shop/{category?}', [ShopController::class, 'displayShop']);
 
+Route::get('/shop/view/{id}', [ShopController::class, 'displayShopItem']);
+
 Route::get('/showcase', [HomeController::class, 'displayShowcase']);
 
 Route::get('/blog', [HomeController::class, 'displayBlog']);

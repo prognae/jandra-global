@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/shop.css') }}" type="text/css">
 
 </head>
 <body>
@@ -121,13 +122,12 @@
                                     <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
-                                                <a href="#">Surgical Mask</a>
-                                                <a href="#">Lab Gown</a>
-                                                <a href="#">Stuffed Toys</a>
-                                                <a href="#">Dental Kits</a>
-                                                <a href="#">Ewan Ko</a>
-                                                <a href="#">Toothbrush</a>
-                                                <a href="#">Accessories</a>
+                                                <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="Masks">Masks</a>
+                                                <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="Lab Gowns">Lab Gowns</a>
+                                                <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="Stuffed Toys">Stuffed Toys</a>
+                                                <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="Dental Supply">Dental Supply</a>
+                                                <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="Toothbrush">Toothbrush</a>
+                                                <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="Accessories">Accessories</a>
                                             </div>
                                         </div>
                                     </div>
@@ -141,7 +141,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__left">
-                                    <p>Showing 1–12 of 25 results</p>
+                                    <p>Showing {{ count($products) }} results</p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -158,11 +158,11 @@
                     </div>
                     <div class="row">
                         @foreach ($products as $product)
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="item-card col-lg-4 col-md-6 col-sm-6" data-status="{{ $product->category }}">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="{{ $product->image_file }}">
+                                    <div class="product__item__pic set-bg" data-setbg="{{ $product->image_file ? $product->image_file  : asset('img/not-found.jpg') }}">
                                         <ul class="product__hover">
-                                            <li><a href="mask.html"><img src="img/icon/search.png" alt=""><span>Product details</span></a></li>
+                                            <li><a href="/shop/view/{{ $product->id }}"><img src="img/icon/search.png" alt=""><span>Product details</span></a></li>
                                         </ul>
                                     </div>
                                     <div class="product__item__text">
@@ -224,6 +224,7 @@
 <script src="{{ asset('js/mixitup.min.js') }}"></script>
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/shop.js') }}"></script>
 
 </body>
 </html>
