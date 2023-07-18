@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,9 @@ Route::get('/shop/view/{id}', [ShopController::class, 'displayShopItem']);
 
 Route::get('/showcase', [HomeController::class, 'displayShowcase']);
 
-Route::get('/blog', [HomeController::class, 'displayBlog']);
+Route::get('/events', [HomeController::class, 'displayBlog']);
+
+Route::get('/events/{event_id}', [EventController::class, 'displayEventPage']);
 
 Route::get('/about', [HomeController::class, 'displayAbout']);
 

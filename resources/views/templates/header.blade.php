@@ -4,15 +4,16 @@
             <div class="row">
                 <div class="col-lg-6 col-md-7">
                     <div class="header__top__left">
-                        <p>Free shipping, 30-day return or refund guarantee.</p>
+                    <p>Discover quality products. Fast delivery. Easy returns.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
-                        <div class="header__top__links">
-                            <a href="#">Sign in</a>
-                            <a href="#">FAQs</a>
-                        </div>
+                    <div class="header__top__links">
+                    <span>Placeholder</span>
+                    <a href="#">FAQs</a>
+                    </div>
+
                         <div class="header__top__hover">
                             <span>Php <i class="arrow_carrot-down"></i></span>
                             <ul>
@@ -30,7 +31,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href="/"><img src="img/llogo.png" alt=""></a>
+                    <a href=""><img src="img/jjandra_logo.png" alt="" style="width: 196px; height: 43px;"></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
@@ -42,7 +43,7 @@
                         <li class="{{ request()->is('/') ? 'active' : '' }}" id="homeLink"><a href="/">Home</a></li>
                         <li class="{{ request()->is('shop') ? 'active' : '' }}" id="shopLink"><a href="/shop">Shop</a></li>
                         <li class="{{ request()->is('showcase') ? 'active' : '' }}" id="showcaseLink"><a href="/showcase">Showcase</a></li>
-                        <li class="{{ request()->is('blog') ? 'active' : '' }}" id="blogLink"><a href="/blog">Blog</a></li>
+                        <li class="{{ request()->is('blog') ? 'active' : '' }}" id="blogLink"><a href="/events">Events</a></li>
                         <li class="{{ request()->is('about') ? 'active' : '' }}" id="aboutLink"><a href="/about">About Us</a> </li>
                     </ul>
                 </nav>

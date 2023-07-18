@@ -94,23 +94,30 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="about__item">
-                        <h4>Who We Are ?</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit..</p>
+                <div class="about__item">
+                    <h4>Who We Are?</h4>
+                    <p>JANDRA GLOBAL TRADERS CORP is a reputable company founded by MA. Lourdes "Dess" Jimenez Villaroman in 2004. With a strong foundation built by Dess, along with dedicated family members and loyal staff, JANDRA quickly emerged as a prominent player in the import and export industry.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="about__item">
                         <h4>Who We Do ?</h4>
-                        <p>lorem10</p>
+                        <p>JANDRA GLOBAL TRADERS CORP specializes in importing and exporting a wide range of high-quality products worldwide. With exclusive distributor rights from Yokoisada (Phils.) Corporation, we proudly market and promote JANDRA Surgical Facemasks, providing superior protection and comfort.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="about__item">
-                        <h4>Why Choose Us</h4>
-                        <p>A two or three storey house is the ideal way to maximise the piece of earth on which our home
-                        sits, but for older or infirm people.</p>
-                    </div>
+                <div class="about__item">
+  <h4>Why Choose Us?</h4>
+  <p>JANDRA GLOBAL TRADERS CORP stands out as a trusted choice for your importing and exporting needs. Here's why:</p>
+  <ul>
+    <li>Extensive experience in the industry</li>
+    <li>Global reach for efficient imports and exports</li>
+    <li>High-quality products, including JANDRA Surgical Facemasks</li>
+    <li>Exclusive partnerships with renowned companies</li>
+    <li>Commitment to customer satisfaction</li>
+  </ul>
+
+</div>
                 </div>
             </div>
         </div>
