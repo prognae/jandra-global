@@ -10,6 +10,7 @@
 
                 </ul>
             </li>
+        <li><a href="/logout"><i class='bx bx-log-out icon'></i>Logout</a></li>
         
     </ul>
     </div>

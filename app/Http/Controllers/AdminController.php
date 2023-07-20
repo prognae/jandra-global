@@ -189,6 +189,10 @@ class AdminController extends Controller
   
     }
 
+    public function logout() {
+        session()->forget('username');
+        return redirect('/admin/login');
+    }
 
 
 

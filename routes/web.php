@@ -20,23 +20,26 @@ use App\Http\Controllers\EventController;
 //Homepage Routes
 Route::get('/', [HomeController::class, 'displayHomepage']);
 
+//Shop Routes
 Route::get('/shop/{category?}', [ShopController::class, 'displayShop']);
-
 Route::get('/shop/view/{id}', [ShopController::class, 'displayShopItem']);
 
+//Showcase Routes
 Route::get('/showcase', [HomeController::class, 'displayShowcase']);
 
+//Event Routes
 Route::get('/events', [HomeController::class, 'displayBlog']);
-
 Route::get('/events/{event_id}', [EventController::class, 'displayEventPage']);
 
+//About Page Routes
 Route::get('/about', [HomeController::class, 'displayAbout']);
 
-//Admin routes
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('login', [AdminController::class, 'adminLogin']);
-    Route::post('login', [AdminController::class, 'adminValidateLogin']);
+//Admin Login Routes
+Route::get('/admin/login', [AdminController::class, 'adminLogin']);
+Route::post('/admin/login', [AdminController::class, 'adminValidateLogin']);
 
+//Admin route group
+Route::group(['prefix' => 'admin', 'middleware' => 'checkSessionLogin'], function () { 
     Route::get('dashboard', [AdminController::class, 'displayDashboard']);
     Route::get('dashboard/item/add', [AdminController::class, 'displayListItem']);
     Route::get('dashboard/item/view', [AdminController::class, 'displayListedItems'])->name('admin.ListedItems');
@@ -50,3 +53,6 @@ Route::group(['prefix' => 'admin'], function () {
     // Route::get('/pagination/paginate-data', [AdminController::class, 'pagination']);
     Route::get('product/search', [AdminController::class, 'search'])->name('product.search');
 });
+
+//Logout Route
+Route::get('/logout', [AdminController::class, 'logout']);
