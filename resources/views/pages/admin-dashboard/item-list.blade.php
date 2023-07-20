@@ -69,8 +69,15 @@
             <h4 style="text-align: left;">Listing Price (₱)</h4>
             <input type="text" class="form-control" id="listingprice" name="price" placeholder="Listing Price" required>	
  
-            <h4 style="text-align: left;">Description</h4>
-            <input type="text" class="form-control" id="title" name="description" placeholder="Description" required>	
+            <h4 style="text-align: left;">Main Description</h4>
+            <textarea name="main_description" id="main_description" cols="30" rows="4" placeholder="Short Description"></textarea>
+
+            <h4 style="text-align: left;">Product Information</h4>
+            <textarea name="product_information" id="product_information" cols="30" rows="4" placeholder="Detailed Information"></textarea>
+
+            <h4 style="text-align: left;">Material Used</h4>
+            <textarea name="material_used" id="material_used" cols="30" rows="4" placeholder="Material Used"></textarea>
+            {{-- <input type="text" class="form-control" id="title" name="description" placeholder="Description" required>	 --}}
 
             {{-- <h4 style="text-align: left;">Quantity</h4>
             <input style="width: 300px; height: 40px;" type="number" class="form-control" id="Quantity" name="quantity" placeholder="      Quantity" min="1" required>	 --}}
