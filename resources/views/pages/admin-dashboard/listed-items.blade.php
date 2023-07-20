@@ -1,156 +1,242 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="../assets/"
-  data-template="vertical-menu-template-free"
->
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+<html lang="en">
+<head>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/favlogo.ico" type="image/x-icon">
+    <link rel="icon" href="img/favlogo.ico" type="image/x-icon">
 
-    <title>Tables - Product</title>
+    <title>Jandra Global</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <link rel="stylesheet" href="/css/itemlist-forms.css" type="text/css"> 
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <meta name="description" content="" />
+    <!-- Include necessary CSS and JS files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/jandra.png" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Include your CSS stylesheet -->
+    <link rel="stylesheet" href="/css/itemlist-forms.css" type="text/css"> 
+    
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
 
     <!-- Designing -->
-    <link rel="stylesheet" href="/css/admin-table/boxicons.css" />
+    <link rel="stylesheet" href="{{ asset('fonts/boxicons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/core.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/theme-default.css') }}" />
 
-    <link rel="stylesheet" href="/css/admin-table/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="/css/admin-table/theme-default.css" class="template-customizer-theme-css" />
-   
-  <body>
-    <div class="layout-wrapper layout-content-navbar">
 
-          <!-- Content wrapper -->
-          <div class="content-wrapper">
-            <!-- Content -->
 
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Products</h4>
-              <div class="demo-inline-spacing mb-4">
-              <button type="button" class="btn btn-primary">
-                <span class="tf-icons bx bx-plus"></span>&nbsp; Add Item
-              </button>
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-outline-primary dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Sort Items
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="javascript:void(0);">By Name (A-Z)</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0);">By Name (Z-A)</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0);">By Price (Highest to Lowest)</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0);">By Price (Lowest to Highest)</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0);">By Category Name</a></li>
-                </ul>
-              </div>
-              </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-              <!-- Responsive Table -->
-              <div class="card">
-                <h5 class="card-header" style="text-align: center;">Product List</h5>
-                <div class="table-responsive text-nowrap">
-                  <table class="table">
-                    <thead>
-                      <tr class="text-nowrap">
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Product Image</th>
-                        <th>Category</th>
-                        <th>Listing Price</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($products as $product)
-                            <tr>
-                                <td>{{ $product->id }}</td>
-                                <td>{{ $product->name }}</td>
-                                <td>
-                                    <img src="{{ $product->image_file }}" class="item-size" alt="">
-                                </td>
-                                <td>{{ $product->category }}</td>
-                                <td>₱ {{ $product->price }}</td>
-                                <td style="max-width: 200px; overflow:hidden; text-overflow:ellipsis; white-space: nowrap;">
-                                    {{ $product->description }}
-                                </td>
-                                <th>
-                                    <div class="demo-inline-spacing">
-                                        <button type="button" title="Edit Item Details" class="btn btn-icon btn-primary">
-                                        <span class="tf-icons bx bx-edit"></span>
-                                        </button>
-                                        <button type="button" title="Delete Item" class="btn btn-icon btn-secondary">
-                                        <span class="tf-icons bx bx-trash"></span>
-                                        </button>
-                                    </div>
-                                </th>
-                            </tr>
-                        @endforeach                      
-                    </tbody>
-                  </table>
+
+</head>
+<body class="container-fluid">
+
+
+  <div class="row">
+    <div class="col-4 bg-dangger">
+      @include('templates.dashboard_sidebar')
+    </div>
+
+    <div class="col-8 mt-1">
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <h4 class="fw-bold py-3 mb-2"><span class="text-muted fw-light"> </span> Listed Products</h4>
+          <div>
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
                 </div>
+            @endif
+          </div>
+          <div class="container-sm px-0">
+            <div class="row ">
+
+              <div class="col-6">
+                <input type="text" name="search" id="search" class="form-control mb-3 mx-0 w-75" placeholder="Search products..." style="width: 100%;">
               </div>
 
-              <!--/ Responsive Table -->
-              <!-- Pagination -->
-              <div class="container-xl container-p-y" style="padding-left: 500px;"></div>
-              <nav aria-label="Page navigation">
-                <ul class="pagination pagination-sm">
-                  <li class="page-item prev">
-                    <a class="page-link" href="javascript:void(0);"
-                      ><i class="tf-icon bx bx-chevrons-left"></i
-                    ></a>
-                  </li>
-                  <li class="page-item next">
-                    <a class="page-link" href="javascript:void(0);"
-                      ><i class="tf-icon bx bx-chevron-left"></i
-                    ></a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="javascript:void(0);">1</a>
-                  </li>
-                  <li class="page-item next">
-                    <a class="page-link" href="javascript:void(0);"
-                      ><i class="tf-icon bx bx-chevron-right"></i
-                    ></a>
-                  </li>
-                  <li class="page-item next">
-                    <a class="page-link" href="javascript:void(0);"
-                      ><i class="tf-icon bx bx-chevrons-right"></i
-                    ></a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <!-- / Pagination -->
+
+              <div class="col-6 d-flex justify-content-end">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination pagination-xl">
+                    
+                    <span class="pt-4">{!! $products->links() !!} </span>
+                  </ul>
+                </nav>
+              </div>
+              
             </div>
           </div>
-        </div>
+          
+          
+          
+          
+          
+          
+          <div class="demo-inline-spacing mb-2">
 
-      </div>
 
-    <script src="/js/admin-table/bootstrap.js"></script>
-  </body>
+  
+          
+
+          <div class="table-data card">  
+            
+              <table class="table table-striped table-bordered table-responsive">
+                <thead>
+                  <tr class="text-nowrap">
+                    <th class="text-center py-4">Actions</th>
+                    <th class="text-center py-4">Product ID</th>
+                    <th class="text-start py-4">Product Name</th>
+                    <th class="text-start py-4">Category</th>
+                    <th class="text-center py-4">Listing Price</th>
+                    <th class="text-start py-4">Description</th>
+                    <th class="text-start py-4">Product Image</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($products as $product)
+                    <tr>
+                      <td class="d-flex justify-content-center">
+                        <a href="{{ route('product.edit', ['id' => $product['id']]) }}" class="btn btn-primary edit-btn p-auto mx-1">
+                          <span class="tf-icons bx bx-edit"></span>
+                        </a>
+                        
+                        <!-- Add a form to delete the item -->
+                        <form action="{{ route('product.delete', ['id' => $product['id']]) }}" method="POST" class="d-inline p-0">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" onclick="return confirmDelete(event)" title="Delete Item" class="btn btn-secondary edit-btn p-auto mx-1">
+                            <span class="tf-icons bx bx-trash"></span>
+                          </button>
+                        </form>
+                      </td>
+                      <td class="text-center">{{ $product['id'] }}</td>
+                      <td class="text-start">{{ $product['name'] }}</td>
+                      <td class="text-start">{{ $product['category'] }}</td>
+                      <td class="text-center">{{ $product['price'] }}</td>
+                      <td class="text-start description-cell">{{ $product['description'] }}</td>
+                      <td class="text-start description-cell">{{ $product['imageFile'] }}</td>
+
+                      {{-- </td> --}}
+                    </tr>
+                  
+                    
+                  @endforeach
+
+                </tbody>
+              </table>
+          </div>
+          
+
+
+
+
+    </div>
+  </div>
+
+  
+  
+  <div class="footer"></div>
+
+
+  <!-- Include any necessary JavaScript libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript -->
+  <script>
+    function confirmDelete(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Show the confirmation dialog
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Once deleted, this listing cannot be recovered!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, submit the form
+                event.target.closest('form').submit();
+            }
+        });
+    }
+  </script>
+
+
+  <!-- Pagination -->
+  {{-- <script>
+    $(document).on('click','.pagination a',function (e){
+          e.preventDefault();
+         let page =$(this).attr('href').split('page=')[1]
+          product(page)
+      })
+
+      function product(page){
+          $.ajax({
+              url:"/pagination/paginate-data?page="+page,
+              success:function(res){
+                  $('.table-data').html(res);
+              }
+          })
+      } 
+
+  </script> --}}
+
+
+
+  <!-- Search -->
+
+  {{-- <script>
+    $(document).on('keyup', function(e){
+      e.preventDefault();
+      let search_string = $('#search').val();
+      // console.log(search_string);
+      $.ajax({
+        url:"{{ route('product.search')}}",
+        method:'GET',
+        data:{search_string:search_string},
+        success:function(res){
+          $('.table-data').html(res);
+        }
+      })
+    })
+
+  </script> --}}
+
+<script>
+  $(document).on('keyup', function(e) {
+    e.preventDefault();
+    let search_string = $('#search').val();
+    // console.log(search_string);
+    $.ajax({
+      url: "{{ route('product.search')}}",
+      method: 'GET',
+      data: { search_string: search_string },
+      success: function(res) {
+        // Extract the desired data from the response
+        let tableData = $(res).find('.table-data');
+
+        // Update the relevant element(s) with the extracted data
+        $('.table-data').html(tableData.html());
+      }
+    })
+  })
+</script>
+
+
+  
+</body>
 </html>

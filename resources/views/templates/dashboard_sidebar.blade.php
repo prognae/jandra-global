@@ -1,4 +1,4 @@
-<section id="sidebar">
+<section class="" id="sidebar">
     <a href="/" class="logo"><i class='bx bxs-home-smile icon' ></i>Jandra Global</a>
     <ul class="side-menu">
         <li><a href="/admin/dashboard"><i class='bx bx-tachometer icon'></i>Dashboard</a></li>
@@ -6,6 +6,8 @@
             <ul class="side-dropdown">
                 <li><a href="/admin/dashboard/item/add">Add Products</a></li>
                 <li><a href="/admin/dashboard/item/view">View Products</a></li>
+
+
                 </ul>
             </li>
         

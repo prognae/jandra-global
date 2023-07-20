@@ -22,18 +22,19 @@
 </head>
 <body>   
 	@include('templates.dashboard_sidebar')
-    <div class="container d-flex justify-content-center mt-50 mb-50 ms-10">
-        <h2 style="text-align: center; margin-bottom: 50px;"> New Listing</h2>
-        <form action="/admin/dashboard/item/add" method="post">
+      <div class="container d-flex justify-content-center mt-50 mb-50 ms-10">
+         <h2 style="text-align: center; margin-bottom: 50px;"> New Listing</h2>
+         <form action="{{ route('product.create') }}" method="post">
+
          @csrf
-        <h4 style="text-align: left;">  Add photos</h4>
-        <div class="container-box">
+         <h4 style="text-align: left;">  Add photos</h4>
+         <div class="container-box">
             <div class="wrapper">
                <div class="image">
                   <img src="" alt="">
                </div>
                <div class="content">
-                  <div class="icon" style="text-align: center;">
+                  <div class="icon" style="text-align: center; ">
                      <i class="fas fa-cloud-upload-alt"></i>
                   </div>
                   <div class="text">
@@ -71,17 +72,14 @@
             <h4 style="text-align: left;">Description</h4>
             <input type="text" class="form-control" id="title" name="description" placeholder="Description" required>	
 
-            <h4 style="text-align: left;">Shop Link</h4>
-            <input type="url" class="form-control" id="title" name="shop_link" placeholder="Shop Link" required>	
-
-            <h4 style="text-align: left;">Quantity</h4>
-            <input  type="number" class="form-control" id="Quantity" name="quantity" placeholder="Quantity" min="1" required>	
+            {{-- <h4 style="text-align: left;">Quantity</h4>
+            <input style="width: 300px; height: 40px;" type="number" class="form-control" id="Quantity" name="quantity" placeholder="      Quantity" min="1" required>	 --}}
                        
             <button style="" type="submit" id="custom-btn">Post</button> 
             <button type="button" id="custom-btn" onclick="window.location.href='/admin/dashboard';">Cancel</button>
 
 
-            </div>
+         </div>
             
         </form>
     </div>
@@ -104,11 +102,7 @@
 
       document.querySelector("#imageFile").addEventListener("change", readFile);
 
-      @if (session('success'))
-         <script>
-            alert("{{ session('success') }}");
-         </script>
-      @endif
+     
 
       
 </script>

@@ -8,6 +8,9 @@ use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\View\View;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 // use Illuminate\Database\Query\IndexHint;
 
 
@@ -75,7 +78,7 @@ class AdminController extends Controller
         $itemPrice = $request->input('price');
         $itemDescription = $request->input('description');
         $itemLink = $request->input('shop_link');
-        $itemQty = $request->input('quantity');
+        // $itemQty = $request->input('quantity');
 
         function uploadImage($image) {
             $cloudinary = new Cloudinary(
@@ -115,6 +118,75 @@ class AdminController extends Controller
                                 'image_file'=>$imageUrl, 'shop_link'=>$itemLink]);
         }
         return redirect('/admin/dashboard');
+    }
+
+    public function showData(Request $request, $id)
+    {
+        $product = Product::find($id);
+        return view('pages.admin-dashboard.update-items', ['product' => $product]);
+
+    }
+    
+
+    public function update(Request $request, $id)
+    {
+        // Fetch the product based on the provided ID
+        $product = Product::findOrFail($id);
+    
+        // Update the product data with the values from the form fields
+        $product->name = $request->input('name');
+        $product->category = $request->input('category');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+        // Update other fields as needed
+    
+        // Save the updated product
+        $product->save();
+    
+        // Redirect to a success page or the updated product page
+        return redirect(route('admin.ListedItems'))->with('success', 'Product updated successfully!');
+    }
+    
+
+    public function delete($id)
+    {
+        $product = Product::find($id);
+
+        if ($product) {
+            $product->delete();
+        }
+
+        return back();
+    } 
+
+
+
+    // public function pagination(Request $request)
+    // {
+    //     $products = Product::latest()->paginate(10);
+
+    //     return view('pages.admin-dashboard.listed-items', compact('products'))->render();
+    // }
+
+
+    public function search(Request $request)
+    {
+
+        $products = Product::where('name', 'like', '%'.$request->search_string.'%')
+            ->orWhere('category', 'like', '%'.$request->search_string.'%')
+            ->orWhere('description', 'like', '%'.$request->search_string.'%')
+            ->orWhere('price', 'like', '%'.$request->search_string.'%')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
+            if($products->count() >= 1){
+                return view('pages.admin-dashboard.listed-items', compact('products'));
+            }else{
+                return response()->json([
+                    'status' =>'nothing_found',
+                ]);
+            }
+  
     }
 
 
