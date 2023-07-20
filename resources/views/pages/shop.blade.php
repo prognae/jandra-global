@@ -88,7 +88,7 @@
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
                             <form action="#">
-                                <input type="text" placeholder="Search...">
+                                <input type="text" id="search" class="search" placeholder="Search...">
                                 <button type="submit"><span class="icon_search"></span></button>
                             </form>
                         </div>
@@ -122,6 +122,7 @@
                                     <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
+                                                <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="all">All</a>
                                                 <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="Masks">Masks</a>
                                                 <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="Lab Gowns">Lab Gowns</a>
                                                 <a href="javascript:void(0);" id="filter-tags" class="filter-tags" data-filter="Stuffed Toys">Stuffed Toys</a>
@@ -141,7 +142,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__left">
-                                    <p>Showing {{ count($products) }} results</p>
+                                    <p>Showing <span id="result_count">{{ count($products) }}</span> results</p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -158,7 +159,7 @@
                     </div>
                     <div class="row">
                         @foreach ($products as $product)
-                            <div class="item-card col-lg-4 col-md-6 col-sm-6" data-status="{{ $product->category }}">
+                            <div style="list-style: none" class="item-card col-lg-4 col-md-6 col-sm-6" data-status="{{ $product->category }}">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="{{ $product->image_file ? $product->image_file  : asset('img/not-found.jpg') }}">
                                         <ul class="product__hover">
@@ -166,26 +167,8 @@
                                         </ul>
                                     </div>
                                     <div class="product__item__text">
-                                        <h6>{{ $product->name }}</h6>
-                                        <div class="rating">
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5>₱{{ $product->price }}</h5>
-                                        <div class="product__color__select">
-                                            <label for="pc-4">
-                                                <input type="radio" id="pc-4">
-                                            </label>
-                                            <label class="active black" for="pc-5">
-                                                <input type="radio" id="pc-5">
-                                            </label>
-                                            <label class="grey" for="pc-6">
-                                                <input type="radio" id="pc-6">
-                                            </label>
-                                        </div>
+                                        <h6>{{ $product->name }}</h6>                                        
+                                        <h5>₱{{ $product->price }}</h5>                                        
                                     </div>
                                 </div>
                             </div>
