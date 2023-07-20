@@ -253,7 +253,7 @@ html,body{
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
-  background: linear-gradient(135deg,#76bfb6 0%,#76bfb6 100%);
+  background: linear-gradient(135deg,#0D6EFD 0%,#0D6EFD 100%);
 }
 
 input[type=text], select {
@@ -263,5 +263,41 @@ input[type=text], select {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+
+.description-cell {
+  max-width: 200px; /* Adjust the max-width as per your requirement */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.alert {
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.btn-fixed-size {
+  width: 40px; /* Adjust the width as desired */
+  height: 40px; /* Adjust the height as desired */
+  padding: 0;
+  line-height: 1;
+  font-size: 16px; /* Adjust the font size as desired */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.align-center {
+  display: inline-block;
+  text-align: center;
 }
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <!-- favicon -->
     <link rel="shortcut icon" href="img/favlogo.ico" type="image/x-icon">
     <link rel="icon" href="img/favlogo.ico" type="image/x-icon">
@@ -11,121 +10,233 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <link rel="stylesheet" href="/css/itemlist-forms.css" type="text/css"> 
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Include necessary CSS and JS files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
     <!-- Include your CSS stylesheet -->
     <link rel="stylesheet" href="/css/itemlist-forms.css" type="text/css"> 
-
-    <!-- Include any necessary JavaScript libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>  
+    
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
-    <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>  
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+
+    <!-- Designing -->
+    <link rel="stylesheet" href="{{ asset('fonts/boxicons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/core.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/theme-default.css') }}" />
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
-<body>
-    @include('templates.dashboard_sidebar')
-    <div class="container d-flex justify-content-center mt-50 mb-50 ms-10">
-        <h2 style="text-align: center; margin-bottom: 50px;">Listed Products</h2>
+<body class="container-fluid">
 
-        <div>
-            <table class="table">
+
+  <div class="row">
+    <div class="col-4 bg-dangger">
+      @include('templates.dashboard_sidebar')
+    </div>
+
+    <div class="col-8 mt-1">
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <h4 class="fw-bold py-3 mb-2"><span class="text-muted fw-light"> </span> Listed Products</h4>
+          <div>
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+          </div>
+          <div class="container-sm px-0">
+            <div class="row ">
+
+              <div class="col-6">
+                <input type="text" name="search" id="search" class="form-control mb-3 mx-0 w-75" placeholder="Search products..." style="width: 100%;">
+              </div>
+
+
+              <div class="col-6 d-flex justify-content-end">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination pagination-xl">
+                    
+                    <span class="pt-4">{!! $products->links() !!} </span>
+                  </ul>
+                </nav>
+              </div>
+              
+            </div>
+          </div>
+          
+          
+          
+          
+          
+          
+          <div class="demo-inline-spacing mb-2">
+
+
+  
+          
+
+          <div class="table-data card">  
+            
+              <table class="table table-striped table-bordered table-responsive">
                 <thead>
-                    <tr>
-                        <th class="text-center">Select</th>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Category</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Quantity</th>
-                        <th class="text-center">Description</th>
-                        <th class="text-center">Image URL</th>
-                    </tr>
+                  <tr class="text-nowrap">
+                    <th class="text-center py-4">Actions</th>
+                    <th class="text-center py-4">Product ID</th>
+                    <th class="text-start py-4">Product Name</th>
+                    <th class="text-start py-4">Category</th>
+                    <th class="text-center py-4">Listing Price</th>
+                    <th class="text-start py-4">Description</th>
+                    <th class="text-start py-4">Product Image</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    @foreach($products as $product)
-                        <tr>
-                            <td class="text-center">
-                                <input type="checkbox" name="selectedItems[]" value="{{ $product['id'] }}">
-                            </td>
-                            <td class="text-center">{{ $product['name'] }}</td>
-                            <td class="text-center">{{ $product['category'] }}</td>
-                            <td class="text-center">{{ $product['price'] }}</td>
-                            <td class="text-center">{{ $product['quantity'] }}</td>
-                            <td class="text-center">{{ $product['description'] }}</td>
-                            <td class="text-center">{{ $product['imageFile'] }}</td>
-                        </tr>
-                    @endforeach
+                  @foreach($products as $product)
+                    <tr>
+                      <td class="d-flex justify-content-center">
+                        <a href="{{ route('product.edit', ['id' => $product['id']]) }}" class="btn btn-primary edit-btn p-auto mx-1">
+                          <span class="tf-icons bx bx-edit"></span>
+                        </a>
+                        
+                        <!-- Add a form to delete the item -->
+                        <form action="{{ route('product.delete', ['id' => $product['id']]) }}" method="POST" class="d-inline p-0">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" onclick="return confirmDelete(event)" title="Delete Item" class="btn btn-secondary edit-btn p-auto mx-1">
+                            <span class="tf-icons bx bx-trash"></span>
+                          </button>
+                        </form>
+                      </td>
+                      <td class="text-center">{{ $product['id'] }}</td>
+                      <td class="text-start">{{ $product['name'] }}</td>
+                      <td class="text-start">{{ $product['category'] }}</td>
+                      <td class="text-center">{{ $product['price'] }}</td>
+                      <td class="text-start description-cell">{{ $product['description'] }}</td>
+                      <td class="text-start description-cell">{{ $product['imageFile'] }}</td>
+
+                      {{-- </td> --}}
+                    </tr>
+                  
+                    
+                  @endforeach
+
                 </tbody>
-            </table>
+              </table>
+          </div>
+          
 
-            <div class="text-center">
-                <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
-                <button class="btn btn-primary" onclick="redirectToEdit()">Edit</button>
-            </div>
-        </div>
-
-    </div>
-    <div class="footer">
-
-    </div>
-    <script src="/js/itemlist-forms.js"></script>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        .btn {
-            margin-top: 10px;
-            margin-right: 5px;
-            padding: 8px 16px;
-            font-size: 16px;
-        }
-    </style>
 
 
 
-    <script>
-        // Function to confirm delete action
-        function confirmDelete() {
-            var selectedItems = [];
-            $('input[type="checkbox"]:checked').each(function() {
-                selectedItems.push($(this).val());
-            });
+    </div>
+  </div>
 
-            if (selectedItems.length > 0) {
-                if (confirm("Are you sure you want to delete the selected items?")) {
-                    // Perform the delete action here
-                    // You can redirect or send an AJAX request to delete the items
-                    // Example: window.location.href = '/delete-items/' + selectedItems.join(',');
-                }
-            } else {
-                alert("Please select at least one item to delete.");
+  
+  
+  <div class="footer"></div>
+
+
+  <!-- Include any necessary JavaScript libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript -->
+  <script>
+    function confirmDelete(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Show the confirmation dialog
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Once deleted, this listing cannot be recovered!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, submit the form
+                event.target.closest('form').submit();
             }
+        });
+    }
+  </script>
+
+
+  <!-- Pagination -->
+  {{-- <script>
+    $(document).on('click','.pagination a',function (e){
+          e.preventDefault();
+         let page =$(this).attr('href').split('page=')[1]
+          product(page)
+      })
+
+      function product(page){
+          $.ajax({
+              url:"/pagination/paginate-data?page="+page,
+              success:function(res){
+                  $('.table-data').html(res);
+              }
+          })
+      } 
+
+  </script> --}}
+
+
+
+  <!-- Search -->
+
+  {{-- <script>
+    $(document).on('keyup', function(e){
+      e.preventDefault();
+      let search_string = $('#search').val();
+      // console.log(search_string);
+      $.ajax({
+        url:"{{ route('product.search')}}",
+        method:'GET',
+        data:{search_string:search_string},
+        success:function(res){
+          $('.table-data').html(res);
         }
+      })
+    })
 
-        // Function to redirect to edit item page
-        function redirectToEdit(itemId) {
-            // Redirect to the edit item page with the specific item ID
-            // Example: window.location.href = '/edit-item/' + itemId;
-        }
-    </script>
+  </script> --}}
+
+<script>
+  $(document).on('keyup', function(e) {
+    e.preventDefault();
+    let search_string = $('#search').val();
+    // console.log(search_string);
+    $.ajax({
+      url: "{{ route('product.search')}}",
+      method: 'GET',
+      data: { search_string: search_string },
+      success: function(res) {
+        // Extract the desired data from the response
+        let tableData = $(res).find('.table-data');
+
+        // Update the relevant element(s) with the extracted data
+        $('.table-data').html(tableData.html());
+      }
+    })
+  })
+</script>
 
 
+  
 </body>
 </html>

@@ -32,10 +32,18 @@ Route::get('/about', [HomeController::class, 'displayAbout']);
 Route::group(['prefix' => 'admin'], function () {
     Route::get('dashboard', [AdminController::class, 'displayDashboard']);
     Route::get('dashboard/item/add', [AdminController::class, 'displayListItem']);
-    Route::get('dashboard/item/view', [AdminController::class, 'displayListedItems']);
+    Route::get('dashboard/item/view', [AdminController::class, 'displayListedItems'])->name('admin.ListedItems');
 
-    Route::post('dashboard/item/admin/seller/insert', [AdminController::class, 'create']);
+   
+        Route::post('product/create', [AdminController::class, 'create'])->name('product.create');
+        Route::get('product/edit/{id}', [AdminController::class, 'showData'])->name('product.edit');
+        Route::put('product/update/{id}', [AdminController::class, 'update'])->name('product.update');
+        Route::delete('product/delete/{id}', [AdminController::class, 'delete'])->name('product.delete');
+
+       
 
 
+        // Route::get('/pagination/paginate-data', [AdminController::class, 'pagination']);
+        Route::get('product/search', [AdminController::class, 'search'])->name('product.search');
 
 });
