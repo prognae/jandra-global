@@ -24,9 +24,9 @@
   
                   <div class="text-center">
                     @if(session('error'))
-                        <p style="color: red">{{ session('error') }}</p>                
+                      <p style="color: red">{{ session('error') }}</p>
                     @endif
-                    <img src="img/jjandra_logo.png"
+                    <img src="{{ asset('img/jjandra_logo.png') }}"
                       style="width: 185px;" alt="logo">
                     <h4 class="mt-1 mb-5 pb-1">Welcome to Jandra Global Traders Corp.</h4>
                   </div>
@@ -36,22 +36,19 @@
                     <p>Please login to your account</p>
   
                     <div class="form-outline mb-4">
-                      <input type="text" name="username" id="form2Example11" class="form-control"
-                        placeholder="Phone number or email address" />
                       <label class="form-label" for="form2Example11">Username</label>
+                      <input type="text" id="form2Example11" name="username" class="form-control"
+                        placeholder="Username" />                     
                     </div>
   
                     <div class="form-outline mb-4">
-                      <input type="password" name="password" id="form2Example22" class="form-control" />
                       <label class="form-label" for="form2Example22">Password</label>
+                      <input type="password" id="form2Example22" name="password" class="form-control" placeholder="Password" />                      
                     </div>
   
                     <div class="text-center pt-1 mb-5 pb-1">
-                      <button class="btn btn-primary btn-block fa-lg" style="background: #fccb90;
-                        background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-                        background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);"
-                        type="submit">Log in</button>
-                      
+                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" style="padding: 14px 40px; font-size: 18px;">Log in</button>
+                      <a class="text-muted" href="#!">Forgot password?</a>
                     </div>  
                   </form>
   
@@ -71,6 +68,7 @@
       </div>
     </div>
   </section>
+  
   
   
 

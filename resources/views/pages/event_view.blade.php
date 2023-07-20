@@ -31,98 +31,59 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__option">
-            <div class="offcanvas__links">
-                <a href="#">Sign in</a>
-                <a href="#">FAQs</a>
-            </div>
-            
-            <div class="offcanvas__top__hover">
-                
-                <span>Usd <i class="arrow_carrot-down"></i></span>
-                <ul>
-                    <li>USD</li>
-                    <li>EUR</li>
-                    <li>USD</li>
-                </ul>
-            </div>
-        </div>
-        <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-            <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-            <div class="price">$0.00</div>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__text">
-            <p>Free shipping, 30-day return or refund guarantee.</p>
-        </div>
-    </div>
-    <!-- Offcanvas Menu End -->
-
-<!-- Header Section Begin -->
+    <!-- Header Section Begin -->
 @include('templates.header')
 <!-- Header Section End -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4>Events</h4>
-                        <div class="breadcrumb__links">
-                            <a href="#">Events</a>
-                            <span>insert name of event here</span>
-                        </div>
-                    </div>
-                </div>
+ <!-- Breadcrumb Section Begin -->
+ <section class="breadcrumb-blog set-bg" data-setbg="{{ asset('img/blog/blog-header.jpg') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Event</h2>
             </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
-    <!-- About Section Begin -->
-    <section class="about spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="about__pic">
-                        <h2>Dental Convention</h2>
-                        <!-- Insert event image -->
-                        <img src="img/about/about-us.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                    <div class="about__item">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam dolorum natus repudiandae error ad dolor, laudantium nemo omnis voluptas impedit perferendis alias saepe maiores. Laudantium sapiente deserunt fuga. Quia, impedit?</p>
-                    </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section End -->
-
-   
-
-
-    <!-- Footer Section Begin -->
-    @include('templates.footer')
-    <!-- Footer Section End -->
-
-    <!-- Search Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
         </div>
     </div>
-    <!-- Search End -->
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- About Section Begin -->
+<section class="about spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="about__pic">
+                    <h2>Dental Convention</h2>
+                    <!-- Insert event image -->
+                    <img src="{{ asset('img/blog/blog-convention.jpg') }}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="about__item">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam dolorum natus repudiandae error ad dolor, laudantium nemo omnis voluptas impedit perferendis alias saepe maiores. Laudantium sapiente deserunt fuga. Quia, impedit?</p>
+                </div>
+        </div>
+    </div>
+</section>
+<!-- About Section End -->
+
+
+
+
+<!-- Footer Section Begin -->
+@include('templates.footer')
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search End -->
 
     <!-- Js Plugins -->
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>

@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href=""><img src="img/jjandra_logo.png" alt="" style="width: 196px; height: 43px;"></a>
+                    <a href="/"><img src="{{ asset('img/jjandra_logo.png') }}" alt="" style="width: 196px; height: 43px;"></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
@@ -50,10 +50,9 @@
             </div>
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
-                    <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                    <div class="price">$0.00</div>
+                    <a href="#" class="search-switch"><img src="{{ asset('img/icon/search.png') }}" alt=""></a>
+                    <a href="#"><img src="{{ asset('img/icon/heart.png') }}" alt=""></a>
+                    <a href="#"><img src="{{ asset('img/icon/cart.png') }}" alt=""> <span>0</span></a>
                 </div>
             </div>
         </div>

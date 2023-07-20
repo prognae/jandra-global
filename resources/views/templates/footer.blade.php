@@ -5,7 +5,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="footer__about">
                             <div class="footer__logo">
-                                <a href="#"><img src="img/llogo.png" alt="Logo"></a>
+                                <a href="#"><img src="{{ asset('img/llogo.png') }}" alt="Logo"></a>
                             </div>
                             <p>Your Trusted Source for Quality Dental Supplies.</p>
                             <a href="#"><img src="img/payment.png" alt=""></a>
