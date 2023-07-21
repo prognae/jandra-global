@@ -23,8 +23,8 @@
 <body>   
 	@include('templates.dashboard_sidebar')
       <div class="container d-flex justify-content-center mt-50 mb-50 ms-10">
-         <h2 style="text-align: center; margin-bottom: 50px;"> New Listing</h2>
-         <form action="{{ route('product.create') }}" method="post">
+         <h2 style="text-align: center; margin-bottom: 50px;"> New Event</h2>
+         <form action="/admin/dashboard/event/add" method="post">
 
          @csrf
          <h4 style="text-align: left;">  Add photos</h4>
@@ -52,34 +52,16 @@
             <input id="imageFile" name="imageFile" type="file" accept="image" hidden><br><br>
             <input type="hidden" id="imageFileb64" name="imageFileb64">
             
-            <h4 style="text-align: left;">Listing Title</h4>
+            <h4 style="text-align: left;">Event Title</h4>
             <input type="text" class="form-control" id="title" name="name" placeholder="Item Name" required>	
 
-            <h4 style="text-align: left;">Category</h4>
-            <select class="form-select form-select-lg" name="category">
-                <option>Dental Supply</option>
-                <option>Figurines</option>
-                <option>Lab Gowns</option>
-                <option>Masks</option>
-                <option>Medicines</option>
-                <option>Stuffed Toys</option>
-                <option>Others</option>
-            </select>
 
-            <h4 style="text-align: left;">Listing Price (₱)</h4>
-            <input type="text" class="form-control" id="listingprice" name="price" placeholder="Listing Price" required>	
-
-            <h4 style="text-align: left;">Shop Link</h4>
-            <input type="url" class="form-control" id="shop_link" name="shop_link" placeholder="Shopee or Lazada link" required>	
+            <h4 style="text-align: left;">Event Date</h4>
+            <input type="date" class="form-control" id="event_date" name="event_date" required>	
+	
  
-            <h4 style="text-align: left;">Main Description</h4>
-            <textarea name="description" id="description" cols="30" rows="4" placeholder="Short Description" required></textarea>
-
-            <h4 style="text-align: left;">Product Information(Optional)</h4>
-            <textarea name="product_information" id="product_information" cols="30" rows="4" placeholder="Detailed Information"></textarea>
-
-            <h4 style="text-align: left;">Material Used(Optional)</h4>
-            <textarea name="material_used" id="material_used" cols="30" rows="4" placeholder="Material Used"></textarea>
+            <h4 style="text-align: left;">Event Description</h4>
+            <textarea name="description" id="description" cols="30" rows="4" placeholder="Event Description (Optional)"></textarea>
             {{-- <input type="text" class="form-control" id="title" name="description" placeholder="Description" required>	 --}}
 
             {{-- <h4 style="text-align: left;">Quantity</h4>

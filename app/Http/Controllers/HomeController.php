@@ -17,10 +17,6 @@ class HomeController extends Controller
         return view('pages.showcase');
     }
 
-    public function displayBlog() {
-        return view('pages.blog');
-    }
-
     public function displayAbout() {
         return view('pages.about');
     }

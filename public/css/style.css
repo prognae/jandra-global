@@ -2190,6 +2190,16 @@ ol {
 	margin-bottom: 35px;
 }
 
+.about__pic h2 {
+	font-weight: bold;
+	text-align: center;
+}
+
+.about__pic p {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
 .about__pic img {
 	min-width: 100%;
 }
@@ -2206,6 +2216,8 @@ ol {
 
 .about__item p {
 	margin-bottom: 0;
+	font-size: 20px;
+	text-align: justify;
 }
 
 /*---------------------

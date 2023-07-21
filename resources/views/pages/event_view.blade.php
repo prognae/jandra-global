@@ -1,3 +1,6 @@
+@php
+    use Carbon\Carbon;
+@endphp
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -52,16 +55,20 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="about__pic">
-                    <h2>Dental Convention</h2>
+                    <h2>{{ $event[0]->event_name }}</h2>
+                    <p>{{ Carbon::createFromFormat('Y-m-d', $event[0]->event_date)->format('F d, Y') }}</p>
                     <!-- Insert event image -->
-                    <img src="{{ asset('img/blog/blog-convention.jpg') }}" alt="">
+                    <img src="{{ $event[0]->event_image }}" alt="">
                 </div>
             </div>
         </div>
         <div class="row">
+            <div class="col-lg-12">
                 <div class="about__item">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam dolorum natus repudiandae error ad dolor, laudantium nemo omnis voluptas impedit perferendis alias saepe maiores. Laudantium sapiente deserunt fuga. Quia, impedit?</p>
+                    <p style="white-space: pre-wrap">{{ $event[0]->event_description }}</p>
                 </div>
+            </div>
+                
         </div>
     </div>
 </section>

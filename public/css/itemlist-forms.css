@@ -266,6 +266,27 @@ input[type=text], select {
   margin-bottom: 30px;
 }
 
+input[type=url], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+input[type=date], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+
 textarea {
   width: 100%;
   padding: 12px 20px;

@@ -79,6 +79,8 @@ class AdminController extends Controller
         $itemDescription = $request->input('description');
         $itemLink = $request->input('shop_link');
         // $itemQty = $request->input('quantity');
+        $itemProductInfo = $request->input('product_information');
+        $itemMaterialUsed = $request->input('material_used');
 
         function uploadImage($image) {
             $cloudinary = new Cloudinary(
@@ -112,10 +114,10 @@ class AdminController extends Controller
             abort(404);
         }
         else if($imageUrl) {
-            $addProduct = DB::insert('INSERT INTO public.products (name, category, price, description, image_file, shop_link)
-                                VALUES (:name, :category, :price, :description, :image_file, :shop_link)',
+            $addProduct = DB::insert('INSERT INTO public.products (name, category, price, description, image_file, shop_link, product_information, material_used)
+                                VALUES (:name, :category, :price, :description, :image_file, :shop_link, :product_information, :material_used)',
                                 ['name'=>$itemName, 'category'=>$itemCategory, 'price'=>$itemPrice, 'description'=>$itemDescription,
-                                'image_file'=>$imageUrl, 'shop_link'=>$itemLink]);
+                                'image_file'=>$imageUrl, 'shop_link'=>$itemLink, 'product_information'=>$itemProductInfo, 'material_used'=>$itemMaterialUsed]);
         }
         return redirect('/admin/dashboard');
     }
@@ -194,7 +196,54 @@ class AdminController extends Controller
         return redirect('/admin/login');
     }
 
+    public function displayEventForms() {
+        return view('pages.admin-dashboard.event-list');
+    }
 
+    public function createEvent(Request $request) {
+        $eventName = $request->input('name');
+        $eventDate = $request->input('event_date');
+        $eventDescription = $request->input('description');
+        $imageFile = $request->input('imageFileb64');
+
+        function uploadImage($image) {
+            $cloudinary = new Cloudinary(
+                [
+                    'cloud' => [
+                        'cloud_name' => env('CLOUDINARY_CLOUDNAME'),
+                        'api_key'    => env('CLOUDINARY_APIKEY'),
+                        'api_secret' => env('CLOUDINARY_APISECRET'),
+                    ],
+                ]
+            );
+
+            $options = [
+                'folder' => 'jandra-assets/jandra-events',
+                'use_filename' => true,
+                'unique_filename' => false,
+                'overwrite' => true
+            ];
+            
+            $imageUpload = $cloudinary->uploadApi()->upload(
+                $image, $options
+            );
+
+            return $imageUpload['secure_url'];   
+            
+        }
+
+        $imageUrl = uploadImage($imageFile);
+
+        if(!$imageUrl) {
+            abort(404);
+        }
+        else if($imageUrl) {
+            $addProduct = DB::insert('INSERT INTO public.event (event_name, event_image, event_description, event_date)
+                                    VALUES(:event_name, :event_image, :event_description, :event_date)',
+                                    ['event_name'=>$eventName, 'event_image'=>$imageUrl, 'event_description'=>$eventDescription, 'event_date'=>$eventDate]);
+        }
+        return redirect('/admin/dashboard');
+    }
 
 }
 
