@@ -66,12 +66,12 @@
 
               <div class="col-6 d-flex justify-content-end">
                 <nav aria-label="Page navigation">
-                  <ul class="pagination pagination-xl">
-                    
-                    <span class="pt-4">{!! $products->links() !!} </span>
-                  </ul>
+                    <ul class="pagination pagination-xl">
+                        <!-- Use the links provided by the $products Paginator instance -->
+                        {!! $products->links() !!}
+                    </ul>
                 </nav>
-              </div>
+            </div>
               
             </div>
           </div>
@@ -123,7 +123,7 @@
                       <td class="text-start">{{ $product['category'] }}</td>
                       <td class="text-center">{{ $product['price'] }}</td>
                       <td class="text-start description-cell">{{ $product['description'] }}</td>
-                      <td class="text-start description-cell">{{ $product['imageFile'] }}</td>
+                      <td class="text-start description-cell">{{ $product['image_file'] }}</td>
 
                       {{-- </td> --}}
                     </tr>
@@ -197,26 +197,9 @@
 
 
 
-  <!-- Search -->
 
-  {{-- <script>
-    $(document).on('keyup', function(e){
-      e.preventDefault();
-      let search_string = $('#search').val();
-      // console.log(search_string);
-      $.ajax({
-        url:"{{ route('product.search')}}",
-        method:'GET',
-        data:{search_string:search_string},
-        success:function(res){
-          $('.table-data').html(res);
-        }
-      })
-    })
-
-  </script> --}}
-
-<script>
+  <!-- SEACRCH WORKING LOCALHOST -->
+{{-- <script>
   $(document).on('keyup', function(e) {
     e.preventDefault();
     let search_string = $('#search').val();
@@ -234,7 +217,31 @@
       }
     })
   })
+</script> --}}
+
+
+  <!-- new not working -->
+
+<script>
+  $(document).on('keyup', '#search', function(e) {
+    e.preventDefault();
+    let search_string = $(this).val();
+
+    $.ajax({
+      url: "{{ route('product.search')}}",
+      method: 'GET',
+      data: { search_string: search_string },
+      success: function(res) {
+        // Extract the desired data from the response
+        let tableData = $(res).find('.table-data');
+
+        // Update the relevant element(s) with the extracted data
+        $('.table-data').html(tableData.html());
+      }
+    });
+  });
 </script>
+
 
 
   
