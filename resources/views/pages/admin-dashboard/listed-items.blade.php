@@ -119,7 +119,7 @@
                         </form>
                       </td>
                       <td class="text-center">{{ $product['id'] }}</td>
-                      <td class="text-start">{{ $product['name'] }}</td>
+                      <td class="text-start"><a href="/shop/view/{{ $product['id'] }}">{{ $product['name'] }} </a></td>
                       <td class="text-start">{{ $product['category'] }}</td>
                       <td class="text-center">{{ $product['price'] }}</td>
                       <td class="text-start description-cell">{{ $product['description'] }}</td>

@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="Admin_Login">
-                            <a href="signin.blade.php" style="text-decoration: none; color: blue;">
+                            <a href="/admin/dashboard" style="text-decoration: none; color: blue;">
                               <p style="font-weight: bold;">
                                 For Admin Login Only
                               </p>
