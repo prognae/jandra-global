@@ -60,15 +60,47 @@ class AdminController extends Controller
         return view('pages.admin-dashboard.item-list');
     }
 
-    public function displayListedItems() {
-        // return view('pages.admin-dashboard.listed-items');
+    // public function displayListedItems() {
+    //     // return view('pages.admin-dashboard.listed-items');
 
-        // $products = Product::all();
-        $products = DB::select("SELECT * FROM public.products");
+    //     // $products = Product::all();
+    //     $products = DB::select("SELECT * FROM public.products");
 
-        return view('pages.admin-dashboard.listed-items', ['products' => $products]);
+    //     return view('pages.admin-dashboard.listed-items', ['products' => $products]);
 
+    // }
+
+
+
+    public function displayListedItems()
+    {
+        $perPage = 10;
+        $currentPage = request()->query('page', 1);
+        $offset = ($currentPage - 1) * $perPage;
+    
+        // Replace your raw SQL query with a modified version that includes pagination and descending order
+        $products = DB::select("SELECT * FROM public.products ORDER BY id DESC OFFSET $offset LIMIT $perPage");
+    
+        // Count the total number of items (needed for pagination)
+        $totalItems = DB::select("SELECT COUNT(*) as total FROM public.products");
+        $totalItems = $totalItems[0]->total;
+    
+        // Convert the result objects to an array
+        $productsArray = json_decode(json_encode($products), true);
+    
+        // Create a LengthAwarePaginator instance to manually paginate the results
+        $paginator = new LengthAwarePaginator($productsArray, $totalItems, $perPage, $currentPage, [
+            'path' => request()->url(), // Generate the URL for pagination links
+        ]);
+    
+        return view('pages.admin-dashboard.listed-items', ['products' => $paginator]);
     }
+    
+
+
+
+
+
 
     public function addProduct(Request $request)
     {
@@ -79,6 +111,8 @@ class AdminController extends Controller
         $itemDescription = $request->input('description');
         $itemLink = $request->input('shop_link');
         // $itemQty = $request->input('quantity');
+        $itemProductInfo = $request->input('product_information');
+        $itemMaterialUsed = $request->input('material_used');
 
         function uploadImage($image) {
             $cloudinary = new Cloudinary(
@@ -112,54 +146,121 @@ class AdminController extends Controller
             abort(404);
         }
         else if($imageUrl) {
-            $addProduct = DB::insert('INSERT INTO public.products (name, category, price, description, image_file, shop_link)
-                                VALUES (:name, :category, :price, :description, :image_file, :shop_link)',
+            $addProduct = DB::insert('INSERT INTO public.products (name, category, price, description, image_file, shop_link, product_information, material_used)
+                                VALUES (:name, :category, :price, :description, :image_file, :shop_link, :product_information, :material_used)',
                                 ['name'=>$itemName, 'category'=>$itemCategory, 'price'=>$itemPrice, 'description'=>$itemDescription,
-                                'image_file'=>$imageUrl, 'shop_link'=>$itemLink]);
+                                'image_file'=>$imageUrl, 'shop_link'=>$itemLink, 'product_information'=>$itemProductInfo, 'material_used'=>$itemMaterialUsed]);
         }
         return redirect('/admin/dashboard');
     }
 
+    // public function showData(Request $request, $id)
+    // {
+    //     $product = Product::find($id);
+    //     return view('pages.admin-dashboard.update-items', ['product' => $product]);
+
+    // }
+
     public function showData(Request $request, $id)
     {
-        $product = Product::find($id);
-        return view('pages.admin-dashboard.update-items', ['product' => $product]);
-
+        // Use the DB facade to execute the raw PostgreSQL query
+        $product = DB::select("SELECT * FROM public.products WHERE id = :id", ['id' => $id]);
+    
+        // Since DB::select() returns an array of objects, we need to check if the result is not empty
+        if (!empty($product)) {
+            $product = $product[0]; // Extract the first result from the array
+        } else {
+            // If the product with the given ID is not found, you can handle the error or redirect to an error page.
+            // For example:
+            abort(404); // Return a 404 Not Found error page.
+        }
+    
+        // Pass the $product object to the view using compact()
+        return view('pages.admin-dashboard.update-items', compact('product'));
     }
     
+    
+
+    // public function update(Request $request, $id)
+    // {
+    //     // Fetch the product based on the provided ID
+    //     $product = Product::findOrFail($id);
+    
+    //     // Update the product data with the values from the form fields
+    //     $product->name = $request->input('name');
+    //     $product->category = $request->input('category');
+    //     $product->price = $request->input('price');
+    //     $product->description = $request->input('description');
+    //     // Update other fields as needed
+    
+    //     // Save the updated product
+    //     $product->save();
+    
+    //     // Redirect to a success page or the updated product page
+    //     return redirect(route('admin.ListedItems'))->with('success', 'Product updated successfully!');
+    // }
 
     public function update(Request $request, $id)
     {
-        // Fetch the product based on the provided ID
-        $product = Product::findOrFail($id);
-    
-        // Update the product data with the values from the form fields
-        $product->name = $request->input('name');
-        $product->category = $request->input('category');
-        $product->price = $request->input('price');
-        $product->description = $request->input('description');
-        // Update other fields as needed
-    
-        // Save the updated product
-        $product->save();
-    
-        // Redirect to a success page or the updated product page
-        return redirect(route('admin.ListedItems'))->with('success', 'Product updated successfully!');
+        $productName = $request->input('name');
+        $productCategory = $request->input('category');
+        $productPrice = $request->input('price');
+        $productDescription = $request->input('description');
+        
+        // Use the DB facade to execute the raw PostgreSQL query to update the product
+        $updateProduct = DB::update(
+            "UPDATE public.products 
+            SET name = :name, category = :category, price = :price, description = :description 
+            WHERE id = :id",
+            [
+                'id' => $id,
+                'name' => $productName,
+                'category' => $productCategory,
+                'price' => $productPrice,
+                'description' => $productDescription,
+            ]
+        );
+
+        // Check if the product was successfully updated
+        if ($updateProduct) {
+            // Redirect to a success page or the updated product page
+            return redirect(route('admin.ListedItems'))->with('success', 'Product updated successfully!');
+        } else {
+            // If the update fails, you can handle the error or redirect to an error page.
+            // For example:
+            abort(500); // Return a 500 Internal Server Error page.
+        }
     }
+
     
+
+    // public function delete($id)
+    // {
+    //     $product = Product::find($id);
+
+    //     if ($product) {
+    //         $product->delete();
+    //     }
+
+    //     return back();
+    // } 
 
     public function delete($id)
     {
-        $product = Product::find($id);
-
-        if ($product) {
-            $product->delete();
+        // Use the DB facade to execute the raw PostgreSQL query to delete the product
+        $deleteProduct = DB::delete("DELETE FROM public.products WHERE id = :id", ['id' => $id]);
+    
+        // Check if the product was successfully deleted
+        if ($deleteProduct) {
+            // Redirect back to the previous page
+            return back()->with('success', 'Product deleted successfully!');
+        } else {
+            // If the deletion fails, you can handle the error or redirect to an error page.
+            // For example:
+            abort(500); // Return a 500 Internal Server Error page.
         }
-
-        return back();
-    } 
-
-
+    }
+    
 
     // public function pagination(Request $request)
     // {
@@ -169,32 +270,117 @@ class AdminController extends Controller
     // }
 
 
+
+
+
+
+    // Working Localhost
+
+    // public function search(Request $request)
+    // {
+
+    //     $products = Product::where('name', 'like', '%'.$request->search_string.'%')
+    //         ->orWhere('category', 'like', '%'.$request->search_string.'%')
+    //         ->orWhere('description', 'like', '%'.$request->search_string.'%')
+    //         ->orWhere('price', 'like', '%'.$request->search_string.'%')
+    //         ->orderBy('id', 'desc')
+    //         ->paginate(10);
+
+    //         if($products->count() >= 1){
+    //             return view('pages.admin-dashboard.listed-items', compact('products'));
+    //         }else{
+    //             return response()->json([
+    //                 'status' =>'nothing_found',
+    //             ]);
+    //         }
+  
+    // }
+
+ 
+
     public function search(Request $request)
     {
-
-        $products = Product::where('name', 'like', '%'.$request->search_string.'%')
-            ->orWhere('category', 'like', '%'.$request->search_string.'%')
-            ->orWhere('description', 'like', '%'.$request->search_string.'%')
-            ->orWhere('price', 'like', '%'.$request->search_string.'%')
-            ->orderBy('id', 'desc')
-            ->paginate(10);
-
-            if($products->count() >= 1){
-                return view('pages.admin-dashboard.listed-items', compact('products'));
-            }else{
-                return response()->json([
-                    'status' =>'nothing_found',
-                ]);
-            }
-  
+        $searchString = $request->search_string;
+    
+        $perPage = 10; // Number of items to show per page
+    
+        // Use the DB facade to execute the raw PostgreSQL query to perform the search
+        $products = DB::select("SELECT * FROM public.products 
+                                WHERE name ILIKE '%' || :search || '%' OR 
+                                      category ILIKE '%' || :search || '%' OR 
+                                      description ILIKE '%' || :search || '%' OR 
+                                      CAST(price AS TEXT) ILIKE '%' || :search || '%' -- Cast price to text for case-insensitive matching
+                                ORDER BY id DESC",
+                                ['search' => $searchString]);
+    
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentItems = array_slice($products, ($currentPage - 1) * $perPage, $perPage);
+    
+        $paginator = new LengthAwarePaginator($currentItems, count($products), $perPage);
+        $paginator->setPath(route('admin.search')); // Replace 'admin.search' with the route name for your search page
+    
+        return view('pages.admin-dashboard.listed-items', ['products' => $paginator]);
     }
+    
+    
+    
+    
+
+
 
     public function logout() {
         session()->forget('username');
         return redirect('/admin/login');
     }
 
+    public function displayEventForms() {
+        return view('pages.admin-dashboard.event-list');
+    }
 
+    public function createEvent(Request $request) {
+        $eventName = $request->input('name');
+        $eventDate = $request->input('event_date');
+        $eventDescription = $request->input('description');
+        $imageFile = $request->input('imageFileb64');
+
+        function uploadImage($image) {
+            $cloudinary = new Cloudinary(
+                [
+                    'cloud' => [
+                        'cloud_name' => env('CLOUDINARY_CLOUDNAME'),
+                        'api_key'    => env('CLOUDINARY_APIKEY'),
+                        'api_secret' => env('CLOUDINARY_APISECRET'),
+                    ],
+                ]
+            );
+
+            $options = [
+                'folder' => 'jandra-assets/jandra-events',
+                'use_filename' => true,
+                'unique_filename' => false,
+                'overwrite' => true
+            ];
+            
+            $imageUpload = $cloudinary->uploadApi()->upload(
+                $image, $options
+            );
+
+            return $imageUpload['secure_url'];   
+            
+        }
+
+        $imageUrl = uploadImage($imageFile);
+
+        if(!$imageUrl) {
+            abort(404);
+        }
+        else if($imageUrl) {
+            $addProduct = DB::insert('INSERT INTO public.event (event_name, event_image, event_description, event_date)
+                                    VALUES(:event_name, :event_image, :event_description, :event_date)',
+                                    ['event_name'=>$eventName, 'event_image'=>$imageUrl, 'event_description'=>$eventDescription, 'event_date'=>$eventDate]);
+        }
+        return redirect('/admin/dashboard');
+    }
 
 }
 

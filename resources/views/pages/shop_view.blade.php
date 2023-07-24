@@ -139,24 +139,19 @@
                             <p>{{ $product[0]->description }}</p>
                             
                             <div class="product__details__cart__option">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
+                                
                                 <a href="#" class="primary-btn">view on shopee</a>
                             </div>
                             <div class="product__details__btns__option">
-                                <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
-                                <a href="#"><i class="fa fa-exchange"></i> Add To Compare</a>
+                                <a href="/shop/{{ $product[0]->category }}"><i class="fa fa-heart"></i> View Related Items</a>
+                                <a href="/shop"><i class="fa fa-exchange"></i> View All Items</a>
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
-                                <img src="img/shop-details/details-payment.png" alt="">
+                                <img src="{{ asset('img/shop-details/details-payment.png') }}" alt="">
                                 <ul>
-                                    <li><span>SKU:</span> 3812912</li>
+                                    <li><span>ID:</span> JG-{{ $product[0]->id }}</li>
                                     <li><span>Categories:</span> {{ $product[0]->category }}</li>
-                                    <li><span>Tag:</span> Surgical Mask, Dental Toys, Lab Gowns, Accessories</li>
                                 </ul>
                             </div>
                         </div>
@@ -174,31 +169,14 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-5" role="tabpanel">
                                     <div class="product__details__tab__content">
-                                        <p class="note">Nam tempus turpis at metus scelerisque placerat nulla deumantos
-                                            solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis
-                                            ut risus. Sedcus faucibus an sullamcorper mattis drostique des commodo
-                                        pharetras loremos.</p>
+                                        <p class="note">{{ $product[0]->description }}</p>
                                         <div class="product__details__tab__content__item">
                                             <h5>Products Infomation</h5>
-                                            <p>A Pocket PC is a handheld computer, which features many of the same
-                                                capabilities as a modern PC. These handy little devices allow
-                                                individuals to retrieve and store e-mail messages, create a contact
-                                                file, coordinate appointments, surf the internet, exchange text messages
-                                                and more. Every product that is labeled as a Pocket PC must be
-                                                accompanied with specific software to operate the unit and must feature
-                                            a touchscreen and touchpad.</p>
-                                            <p>As is the case with any new technology product, the cost of a Pocket PC
-                                                was substantial during it’s early release. For approximately $700.00,
-                                                consumers could purchase one of top-of-the-line Pocket PCs in 2003.
-                                                These days, customers are finding that prices have become much more
-                                                reasonable now that the newness is wearing off. For approximately
-                                            $350.00, a new Pocket PC can now be purchased.</p>
+                                            <p style="white-space: pre-wrap">{{ $product[0]->product_information }}</p>
                                         </div>
                                         <div class="product__details__tab__content__item">
                                             <h5>Material used</h5>
-                                            <p>The Jandra Surgical Mask is constructed using premium non-woven fabric. Non-woven fabrics are made from synthetic fibers that are bonded together through a process that does not require weaving. This type of fabric is known for its durability, breathability, and ability to provide a protective barrier against particles.
-
-                                                The outer layer of the Jandra Surgical Mask is composed of a high-density, non-woven fabric. This layer acts as a robust barrier against airborne particles, dust, and pollutants. It effectively filters out microscopic particles, providing a first line of defense against potential contaminants.</p>
+                                            <p style="white-space: pre-wrap">{{ $product[0]->material_used }}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -48,7 +48,6 @@
   
                     <div class="text-center pt-1 mb-5 pb-1">
                       <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" style="padding: 14px 40px; font-size: 18px;">Log in</button>
-                      <a class="text-muted" href="#!">Forgot password?</a>
                     </div>  
                   </form>
   

@@ -28,7 +28,7 @@ Route::get('/shop/view/{id}', [ShopController::class, 'displayShopItem']);
 Route::get('/showcase', [HomeController::class, 'displayShowcase']);
 
 //Event Routes
-Route::get('/events', [HomeController::class, 'displayBlog']);
+Route::get('/events', [EventController::class, 'displayEvents']);
 Route::get('/events/{event_id}', [EventController::class, 'displayEventPage']);
 
 //About Page Routes
@@ -52,6 +52,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkSessionLogin'], functio
 
     // Route::get('/pagination/paginate-data', [AdminController::class, 'pagination']);
     Route::get('product/search', [AdminController::class, 'search'])->name('product.search');
+
+    //Route for events
+    Route::get('dashboard/event/add', [AdminController::class, 'displayEventForms']);
+    Route::post('dashboard/event/add', [AdminController::class, 'createEvent']);
 });
 
 //Logout Route

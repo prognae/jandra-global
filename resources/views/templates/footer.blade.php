@@ -8,7 +8,7 @@
                                 <a href="#"><img src="{{ asset('img/llogo.png') }}" alt="Logo"></a>
                             </div>
                             <p>Your Trusted Source for Quality Dental Supplies.</p>
-                            <a href="#"><img src="img/payment.png" alt=""></a>
+                            <a href="#"><img src="{{ asset('img/payment.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">

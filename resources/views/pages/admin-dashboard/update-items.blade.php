@@ -31,18 +31,16 @@
         <!-- Your form to edit the product -->
 
         <form method="POST" action="{{ route('product.update', $product->id) }}">
-            
-
             @csrf
             @method('PUT')
-
+        
             <!-- Add your form fields here -->
             <div class="container-box">
                 <h4 style="text-align: left;">Listing ID</h4>
-                <input type="text" class="form-control" id="title" name="id" placeholder="Item Id" value="{{$product['id']}}" readonly>
+                <input type="text" class="form-control" id="title" name="id" placeholder="Item Id" value="{{ $product->id }}" readonly>
                 <h4 style="text-align: left;">Listing Title</h4>
-                <input type="text" class="form-control" id="title" name="name" placeholder="Item Name" value="{{$product['name']}}" required>	
-
+                <input type="text" class="form-control" id="title" name="name" placeholder="Item Name" value="{{ $product->name }}" required>	
+        
                 <h4 style="text-align: left;">Category</h4>
                 <select class="form-select form-select-lg" name="category" required>
                     <option value="" selected></option>
@@ -54,18 +52,22 @@
                     <option value="Stuffed Toys">Stuffed Toys</option>
                     <option value="Others">Others</option>
                 </select>
-
+        
                 <h4 style="text-align: left;">Listing Price (₱)</h4>
-                <input type="text" class="form-control" id="listingprice" name="price" placeholder="Listing Price" value="{{$product['price']}}" required>	
-    
-                <h4 style="text-align: left;">Description</h4>
-                <input type="text" class="form-control" id="title" name="description" placeholder="Description" value="{{$product['description']}}" required>	
+                <input type="text" class="form-control" id="listingprice" name="price" placeholder="Listing Price" value="{{ $product->price }}" required>	
 
+                <h4 style="text-align: left;">Main Description</h4>
+                <textarea name="description" id="description" cols="30" rows="4" placeholder="Short Description" value="{{ $product->description }}" required></textarea>
+                
+                <h4 style="text-align: left;">Product Information (Optional)</h4>
+                <textarea name="product_information" id="product_information" cols="30" rows="4" placeholder="Detailed Information">{{ $product->product_information }}</textarea>
+
+                <h4 style="text-align: left;">Material Used (Optional)</h4>
+                <textarea name="material_used" id="material_used" cols="30" rows="4" placeholder="Material Used">{{ $product->material_used }}</textarea>
+        
                 <button style="" type="submit" id="custom-btn">Save Changes</button> 
-
                 <button type="button" id="custom-btn" onclick="window.location.href='/admin/dashboard/item/view';">Cancel</button>
             </div>
-
         </form>
 
     </div>
