@@ -79,9 +79,9 @@
           <div class="row">
             <div class="col-xl-5 col-lg-7 col-md-8">
               <div class="hero__text">
-                <h6>Welcome to</h6>
-                <h2>Jandra Global Traders Corp.</h2>
-                <p>Discover high-quality White - Jandra Surgical Masks for superior protection and comfort.</p>
+                <h6 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Welcome to</h6>
+                <h2 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Jandra Global Traders Corp.</h2>
+                <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Discover high-quality White - Jandra Surgical Masks for superior protection and comfort.</p>
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
                   <a href="#"><i class="fa fa-facebook"></i></a>
@@ -101,9 +101,9 @@
           <div class="row">
             <div class="col-xl-5 col-lg-7 col-md-8">
               <div class="hero__text">
-                <h6>Introducing</h6>
-                <h2>Janda Limited Edition</h2>
-                <p>Discover the stylish and durable Black - ND99 Surgical Mask for ultimate protection and fashion.</p>
+              <h6 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Introducing</h6>
+  <h2 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Janda Limited Edition</h2>
+  <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Discover the stylish and durable Black - ND99 Surgical Mask for ultimate protection and fashion.</p>
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
                   <a href="#"><i class="fa fa-facebook"></i></a>
@@ -123,9 +123,9 @@
           <div class="row">
             <div class="col-xl-5 col-lg-7 col-md-8">
               <div class="hero__text">
-                <h6>Discover</h6>
-                <h2>Jandra Kids Collection</h2>
-                <p>Explore our fun and colorful collection of surgical masks specially designed for kids.</p>
+                <h6 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Discover</h6>
+                <h2 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Jandra Kids Collection</h2>
+                <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Explore our fun and colorful collection of surgical masks specially designed for kids.</p>
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
                   <a href="#"><i class="fa fa-facebook"></i></a>
@@ -145,9 +145,9 @@
           <div class="row">
             <div class="col-xl-5 col-lg-7 col-md-8">
               <div class="hero__text">
-                <h6>Experience</h6>
-                <h2>Jandra Lab Gown Collection</h2>
-                <p>Stay protected and comfortable with our high-quality lab gowns designed for laboratory professionals and medical personnel.</p>
+                <h6 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Experience</h6>
+                <h2 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Jandra Lab Gown Collection</h2>
+                <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Stay protected and comfortable with our high-quality lab gowns designed for laboratory professionals and medical personnel.</p>
 
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
@@ -168,9 +168,9 @@
           <div class="row">
             <div class="col-xl-5 col-lg-7 col-md-8">
               <div class="hero__text">
-                <h6>Discover</h6>
-                <h2>Jandra Dental Figurine Collection</h2>
-                <p>Explore our unique collection of dental-themed figurines, showcasing the artistry and beauty of dentistry in intricate designs.</p>
+                <h6 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Discover</h6>
+                <h2 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Jandra Dental Figurine Collection</h2>
+                <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Explore our unique collection of dental-themed figurines, showcasing the artistry and beauty of dentistry in intricate designs.</p>
 
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
@@ -185,6 +185,28 @@
         </div>
       </div>
       <!--end of 5th-->
+      <div class="hero__items set-bg" data-setbg="img/hero/hero-9.png">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-5 col-lg-7 col-md-8">
+              <div class="hero__text">
+                <h6 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Discover</h6>
+                <h2 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Jandra Dental Figurine Collection</h2>
+                <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Explore our unique collection of dental-themed figurines, showcasing the artistry and beauty of dentistry in intricate designs.</p>
+
+                <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                <div class="hero__social">
+                  <a href="https://www.facebook.com/Jandra.PH"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-pinterest"></i></a>
+                  <a href="https://www.instagram.com/jandra.ph/?hl=en"><i class="fa fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end of 6th-->
     </div>
   </section>
 <!-- Hero Section End -->
