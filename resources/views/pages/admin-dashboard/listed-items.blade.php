@@ -19,7 +19,7 @@
 
 
     <!-- Include your CSS stylesheet -->
-    <link rel="stylesheet" href="/css/itemlist-forms.css" type="text/css"> 
+    <link rel="stylesheet" href="{{ asset('css/itemlist-forms.css') }}" type="text/css"> 
     
 
     <!-- Material Icons -->
@@ -127,7 +127,7 @@
                       <td class="text-start">{{ $product['category'] }}</td>
                       <td class="text-center">{{ $product['price'] }}</td>
                       <td class="text-start description-cell">{{ $product['description'] }}</td>
-                      <td class="text-start description-cell">{{ $product['image_file'] }}</td>
+                      <td class="text-start description-cell"><img src="{{ $product['image_file'] }}" alt="" style="height: 50px"></td>
 
                     </tr>
                   
