@@ -60,35 +60,90 @@ class AdminController extends Controller
         return view('pages.admin-dashboard.item-list');
     }
 
-    // public function displayListedItems() {
-    //     // return view('pages.admin-dashboard.listed-items');
 
-    //     // $products = Product::all();
-    //     $products = DB::select("SELECT * FROM public.products");
 
-    //     return view('pages.admin-dashboard.listed-items', ['products' => $products]);
-
+    // public function displayListedItems()
+    // {
+    //     $perPage = 10;
+    //     $currentPage = request()->query('page', 1);
+    //     $offset = ($currentPage - 1) * $perPage;
+    
+    //     // Replace your raw SQL query with a modified version that includes pagination and descending order
+    //     $products = DB::select("SELECT * FROM public.products ORDER BY id DESC OFFSET $offset LIMIT $perPage");
+    
+    //     // Count the total number of items (needed for pagination)
+    //     $totalItems = DB::select("SELECT COUNT(*) as total FROM public.products");
+    //     $totalItems = $totalItems[0]->total;
+    
+    //     // Convert the result objects to an array
+    //     $productsArray = json_decode(json_encode($products), true);
+    
+    //     // Create a LengthAwarePaginator instance to manually paginate the results
+    //     $paginator = new LengthAwarePaginator($productsArray, $totalItems, $perPage, $currentPage, [
+    //         'path' => request()->url(), // Generate the URL for pagination links
+    //     ]);
+    
+    //     return view('pages.admin-dashboard.listed-items', ['products' => $paginator]);
     // }
 
+// ...
 
+    // public function displayListedItems(Request $request)
+    // {
+    //     $category = $request->query('category');
 
-    public function displayListedItems()
+    //     $perPage = 10;
+    //     $currentPage = $request->query('page', 1);
+    //     $offset = ($currentPage - 1) * $perPage;
+
+    //     $query = "SELECT * FROM public.products";
+
+    //     if ($category) {
+    //         $query .= " WHERE category ILIKE '%$category%'";
+    //     }
+
+    //     $query .= " ORDER BY id DESC OFFSET $offset LIMIT $perPage";
+
+    //     $products = DB::select($query);
+
+    //     $totalItems = DB::select("SELECT COUNT(*) as total FROM public.products");
+    //     $totalItems = $totalItems[0]->total;
+
+    //     $productsArray = json_decode(json_encode($products), true);
+
+    //     $paginator = new LengthAwarePaginator($productsArray, $totalItems, $perPage, $currentPage, [
+    //         'path' => request()->url(), // Generate the URL for pagination links
+    //     ]);
+
+    //     return view('pages.admin-dashboard.listed-items', ['products' => $paginator]);
+    // }
+
+    public function displayListedItems(Request $request)
     {
+        $category = $request->query('category');
+    
         $perPage = 10;
-        $currentPage = request()->query('page', 1);
+        $currentPage = $request->query('page', 1);
         $offset = ($currentPage - 1) * $perPage;
     
-        // Replace your raw SQL query with a modified version that includes pagination and descending order
-        $products = DB::select("SELECT * FROM public.products ORDER BY id DESC OFFSET $offset LIMIT $perPage");
+        $query = "SELECT * FROM public.products";
     
-        // Count the total number of items (needed for pagination)
+        if (!$category || $category === "All Categories") {
+            // If "All Categories" is selected or no category is selected, fetch all products
+        } else {
+            // If a specific category is selected, add the category filter to the query
+            $query .= " WHERE category ILIKE '%$category%'";
+        }
+    
+        $query .= " ORDER BY id DESC OFFSET $offset LIMIT $perPage";
+    
+        $products = DB::select($query);
+    
         $totalItems = DB::select("SELECT COUNT(*) as total FROM public.products");
         $totalItems = $totalItems[0]->total;
     
-        // Convert the result objects to an array
         $productsArray = json_decode(json_encode($products), true);
     
-        // Create a LengthAwarePaginator instance to manually paginate the results
         $paginator = new LengthAwarePaginator($productsArray, $totalItems, $perPage, $currentPage, [
             'path' => request()->url(), // Generate the URL for pagination links
         ]);
@@ -96,7 +151,6 @@ class AdminController extends Controller
         return view('pages.admin-dashboard.listed-items', ['products' => $paginator]);
     }
     
-
 
 
 
@@ -154,12 +208,6 @@ class AdminController extends Controller
         return redirect('/admin/dashboard');
     }
 
-    // public function showData(Request $request, $id)
-    // {
-    //     $product = Product::find($id);
-    //     return view('pages.admin-dashboard.update-items', ['product' => $product]);
-
-    // }
 
     public function showData(Request $request, $id)
     {
@@ -179,26 +227,6 @@ class AdminController extends Controller
         return view('pages.admin-dashboard.update-items', compact('product'));
     }
     
-    
-
-    // public function update(Request $request, $id)
-    // {
-    //     // Fetch the product based on the provided ID
-    //     $product = Product::findOrFail($id);
-    
-    //     // Update the product data with the values from the form fields
-    //     $product->name = $request->input('name');
-    //     $product->category = $request->input('category');
-    //     $product->price = $request->input('price');
-    //     $product->description = $request->input('description');
-    //     // Update other fields as needed
-    
-    //     // Save the updated product
-    //     $product->save();
-    
-    //     // Redirect to a success page or the updated product page
-    //     return redirect(route('admin.ListedItems'))->with('success', 'Product updated successfully!');
-    // }
 
     public function update(Request $request, $id)
     {
@@ -231,19 +259,6 @@ class AdminController extends Controller
             abort(500); // Return a 500 Internal Server Error page.
         }
     }
-
-    
-
-    // public function delete($id)
-    // {
-    //     $product = Product::find($id);
-
-    //     if ($product) {
-    //         $product->delete();
-    //     }
-
-    //     return back();
-    // } 
 
     public function delete($id)
     {
@@ -296,33 +311,35 @@ class AdminController extends Controller
   
     // }
 
- 
-
+    
     public function search(Request $request)
     {
         $searchString = $request->search_string;
     
-        $perPage = 10; // Number of items to show per page
-    
-        // Use the DB facade to execute the raw PostgreSQL query to perform the search
         $products = DB::select("SELECT * FROM public.products 
-                                WHERE name ILIKE '%' || :search || '%' OR 
-                                      category ILIKE '%' || :search || '%' OR 
-                                      description ILIKE '%' || :search || '%' OR 
-                                      CAST(price AS TEXT) ILIKE '%' || :search || '%' -- Cast price to text for case-insensitive matching
+                                WHERE name ILIKE :search OR 
+                                      category ILIKE :search OR 
+                                      description ILIKE :search OR 
+                                      CAST(price AS TEXT) ILIKE :search -- Cast price to text for case-insensitive matching
                                 ORDER BY id DESC",
-                                ['search' => $searchString]);
+                                ['search' => '%' . $searchString . '%']);
     
+        $perPage = 10;
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $currentItems = array_slice($products, ($currentPage - 1) * $perPage, $perPage);
+        $offset = ($currentPage - 1) * $perPage;
+        $totalItems = count($products);
     
-        $paginator = new LengthAwarePaginator($currentItems, count($products), $perPage);
-        $paginator->setPath(route('admin.search')); // Replace 'admin.search' with the route name for your search page
+        // Create a LengthAwarePaginator instance to manually paginate the results
+        $paginator = new LengthAwarePaginator(array_slice($products, $offset, $perPage), $totalItems, $perPage, $currentPage, [
+            'path' => request()->url(), // Generate the URL for pagination links
+        ]);
     
         return view('pages.admin-dashboard.listed-items', ['products' => $paginator]);
     }
     
     
+    
+
     
     
 

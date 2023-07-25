@@ -53,6 +53,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkSessionLogin'], functio
     // Route::get('/pagination/paginate-data', [AdminController::class, 'pagination']);
     Route::get('product/search', [AdminController::class, 'search'])->name('product.search');
 
+ 
+
+
     //Route for events
     Route::get('dashboard/event/add', [AdminController::class, 'displayEventForms']);
     Route::post('dashboard/event/add', [AdminController::class, 'createEvent']);

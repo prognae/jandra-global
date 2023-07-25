@@ -36,14 +36,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Add this line to the head section of your HTML file -->
+    <script>
+      const baseURL = "{{ url('/') }}"; // This will set the baseURL to your Laravel application URL
+    </script>
+
+
 
 </head>
 <body class="container-fluid">
 
-
   <div class="row">
     <div class="col-4 bg-dangger">
       @include('templates.dashboard_sidebar')
+
     </div>
 
     <div class="col-8 mt-1">
@@ -57,38 +63,36 @@
             @endif
           </div>
           <div class="container-sm px-0">
-            <div class="row ">
+            <div class="row">
 
-              <div class="col-6">
-                <input type="text" name="search" id="search" class="form-control mb-3 mx-0 w-75" placeholder="Search products..." style="width: 100%;">
+              <div class="col-sm-6 ">
+                <input type="text" name="search" id="search" class="form-control" placeholder="Search products...">
               </div>
-
-
-              <div class="col-6 d-flex justify-content-end">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination pagination-xl">
-                        <!-- Use the links provided by the $products Paginator instance -->
-                        {!! $products->links() !!}
-                    </ul>
-                </nav>
-            </div>
-              
-            </div>
+            
+              <div class="col-sm-6 ">
+                <form action="{{ url('/admin/dashboard/item/view') }}" method="GET" class="d-flex justify-content-end">
+                  <div class="form-group mx-3">
+                    <select name="category" class="form-select bg-light" onchange="this.form.submit()">
+                      <option value="" disabled selected hidden>Filter Category</option>
+                      <option value="Dental Supply">Dental Supply</option>
+                      <option value="Figurines">Figurines</option>
+                      <option value="Lab Gowns">Lab Gowns</option>
+                      <option value="Masks">Masks</option>
+                      <option value="Medicines">Medicines</option>
+                      <option value="Stuffed Toys">Stuffed Toys</option>
+                      <option value="Others">Others</option>
+                    </select>                    
+                  
+                  </div>
+                </form>
+              </div>
+            
+            </div>    
           </div>
-          
-          
-          
-          
-          
+
           
           <div class="demo-inline-spacing mb-2">
-
-
-  
-          
-
-          <div class="table-data card">  
-            
+          <div class="table-data card">             
               <table class="table table-striped table-bordered table-responsive">
                 <thead>
                   <tr class="text-nowrap">
@@ -125,14 +129,23 @@
                       <td class="text-start description-cell">{{ $product['description'] }}</td>
                       <td class="text-start description-cell">{{ $product['image_file'] }}</td>
 
-                      {{-- </td> --}}
                     </tr>
                   
                     
                   @endforeach
-
                 </tbody>
               </table>
+
+                <div class="col-md-12 px-3">
+                  <nav aria-label="Page navigation ">
+                    <ul class="pagination justify-content-end">
+                      <!-- Use the links provided by the $products Paginator instance -->
+                      {!! $products->links() !!}
+                    </ul>
+                  </nav>
+                </div>
+
+              
           </div>
           
 
@@ -174,27 +187,18 @@
         });
     }
   </script>
-
-
-  <!-- Pagination -->
-  {{-- <script>
-    $(document).on('click','.pagination a',function (e){
-          e.preventDefault();
-         let page =$(this).attr('href').split('page=')[1]
-          product(page)
-      })
-
-      function product(page){
-          $.ajax({
-              url:"/pagination/paginate-data?page="+page,
-              success:function(res){
-                  $('.table-data').html(res);
-              }
-          })
-      } 
-
-  </script> --}}
-
+  
+  <script>
+    function redirectToCategory(category) {
+        if (category === "") {
+            // If "All Categories" is selected, redirect to the desired URL
+            window.location.href = "{{ route('admin.ListedItems') }}";
+        } else {
+            // If a specific category is selected, submit the form
+            this.form.submit();
+        }
+    }
+  </script>
 
 
 
@@ -222,25 +226,11 @@
 
   <!-- new not working -->
 
-<script>
-  $(document).on('keyup', '#search', function(e) {
-    e.preventDefault();
-    let search_string = $(this).val();
+  <script src="{{ asset('js/search.js') }}"></script>
 
-    $.ajax({
-      url: "{{ route('product.search')}}",
-      method: 'GET',
-      data: { search_string: search_string },
-      success: function(res) {
-        // Extract the desired data from the response
-        let tableData = $(res).find('.table-data');
+  <script src="{{ asset('js/filter.js') }}"></script>
 
-        // Update the relevant element(s) with the extracted data
-        $('.table-data').html(tableData.html());
-      }
-    });
-  });
-</script>
+
 
 
 
