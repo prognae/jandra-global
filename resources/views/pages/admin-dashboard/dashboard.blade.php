@@ -15,8 +15,10 @@
     <title>Dashboard</title>
   </head>
 <body>
+  
 	@include('templates.dashboard_sidebar')
 	<section id="content">
+
 		<div class="dash-content">
             <div class="overview">
 		<!-- Main -->

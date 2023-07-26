@@ -51,13 +51,17 @@ class AdminController extends Controller
             abort(404);
         }
     }
-
+    /*
     public function displayDashboard() {
         return view('pages.admin-dashboard.dashboard');
     }
+    */
+    public function displayDashboard() {
+        return view('pages.new-admin.index');
+    }
 
     public function displayListItem() {
-        return view('pages.admin-dashboard.item-list');
+        return view('pages.new-admin.item-list');
     }
 
 
@@ -351,7 +355,7 @@ class AdminController extends Controller
     }
 
     public function displayEventForms() {
-        return view('pages.admin-dashboard.event-list');
+        return view('pages.new-admin.event-list');
     }
 
     public function createEvent(Request $request) {

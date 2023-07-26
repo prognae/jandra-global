@@ -16,14 +16,19 @@
     />
 
     <title>Tables - Product</title>
-    <meta name="description" content="" />
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/jandra.png') }}" />
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/jandra.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
 
 <!-- Icons. Uncomment required icon fonts -->
 <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/boxicons.css') }}" />
@@ -36,29 +41,29 @@
 <!-- Vendors CSS -->
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
+<link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+
 <!-- Page CSS -->
 
 <!-- Helpers -->
 <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
 <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-<!--? Config:  Mandatory theme config file contains global vars & default theme options, Set your preferred theme option in this file.  -->
+<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 <script src="{{ asset('assets/js/config.js') }}"></script>
-
   </head>
 
   <body>
+  @include('pages.new-admin.sidebar') 
      <!-- Layout wrapper -->
      <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
-        
-        @include('pages.new-admin.sidebar') 
         <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="index.html" class="app-brand-link">
-                <img src="{{ asset('assets/img/favicon/jandra.pn') }}g" class="image-size" alt="">
+                <img src="{{ asset('assets/img/favicon/jandra.png') }}" class="image-size" alt="">
 
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -185,74 +190,47 @@
           <div class="content-wrapper align-items-center">
             <!-- Content -->
             <div class="col-lg-9" style="padding-top: 20px;">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Products /</span> Edit Product</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Products /</span> Add Product</h4>
                 <div class="card mb-4">
-
-                  <!---Card Header Change Product-->
                   <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0"><b>Change Product Details</b></h5>
+                    <h5 class="mb-0"><b>Add New Items</b></h5>
                     <small class="text-muted float-end">Input Product details</small>
                   </div>
                   <div class="card-body">
                     <form>
-                      
-                      <!-- Upload Thumbnail-->
-                        <!-- <div class="mb-3">
+                      <!--Upload Thumbnail-->
+                        <div class="mb-3">
                             <label for="formFileMultiple" class="form-label">Upload Product Thumbnail</label>
                             <input class="form-control" type="file" id="formFileMultiple" multiple />
-                        </div> -->
-                      <!--Upload Thumbnail -->
+                        </div>
+                      <!--Upload Thumbnail-->
 
                         <!--Upload Product Images-->
-                        <!-- <div class="mb-3">
+                        <div class="mb-3">
                           <label for="formFileMultiple" class="form-label">Add Product Photos</label>
                           <input class="form-control" type="file" id="formFileMultiple" multiple />
                           <input class="form-control" type="file" id="formFileMultiple" multiple />
                           <input class="form-control" type="file" id="formFileMultiple" multiple />
-                        </div> -->
+                        </div>
                         <!--Upload Product Images-->
 
- <!-- Your form to edit the product -->
-        <form method="POST" action="{{ route('product.update', $product->id) }}">
-          @csrf
-          @method('PUT')
-
-<!--Listing ID-->
-          <div class="mb-3">
-            <label class="form-label" for="basic-icon-default-fullname">Listing ID</label>
-            <div class="input-group input-group-merge">
-              <span id="basic-icon-default-Title" class="input-group-text">
-                <i class="bx bx-rename"></i>
-              </span>
-              <input
-                type="text"
-                class="form-control"
-                id="basic-icon-default-fullname"
-                name="id"
-                placeholder="Item Id"
-                value="{{ $product->id }}"
-                readonly
-              />
-            </div>
-          </div>
-<!--Listing Title-->
-          <div class="mb-3">
-            <label class="form-label" for="basic-icon-default-fullname">Listing Title</label>
-            <div class="input-group input-group-merge">
-              <span id="basic-icon-default-Title" class="input-group-text">
-                <i class="bx bx-rename"></i>
-              </span>
-              <input
-                type="text"
-                class="form-control"
-                id="basic-icon-default-fullname"
-                name="id"
-                placeholder="Item Id"
-                value="{{ $product->name }}"
-                required
-              />
-            </div>
-          </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-fullname">Listing Title</label>
+                        <div class="input-group input-group-merge">
+                          <span id="basic-icon-default-Title" class="input-group-text"
+                            ><i class="bx bx-rename"></i
+                          ></span>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="title"
+                            name = "name"
+                            placeholder="Type Here..."
+                            aria-label=""
+                            aria-describedby=""
+                          required/>
+                        </div>
+                      </div>
 
                       <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Category</label>
@@ -280,7 +258,6 @@
                               placeholder="0"
                               aria-label=""
                               required
-                              value="{{ $product->price }}"
                             />
                             <!--
                             <span class="input-group-text">.00</span>-->
@@ -310,61 +287,67 @@
                           <span id="basic-icon-default-description" class="input-group-text"
                             ><i class="bx bx-detail"></i
                           ></span>
-                          
-                          <input
-                            type="text"
-                            id="description"
-                            name = "description"
-                            class="form-control"
-                            placeholder="Type Here..."
-                            aria-label=""
-                            aria-describedby=""
-                            value="{{ $product->description }}" required>
-                          </textarea>
+                         
+                      
+                      <input
+                          type="text"
+                          id="description"
+                          name="description"
+                          class="form-control"
+                          placeholder="Type Here..."
+                          aria-label=""
+                          aria-describedby=""
+                          required
+                      />
+
+                      <!-- Textarea Element -->
+                      <textarea class="form-control" name="description" id="description" cols="30" rows="4" placeholder="Type Here..." aria-label="" aria-describedby="" required></textarea>
+
+
                         </div>
                       </div>
 
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-description">Product Information (Optional)</label>
                         <div class="input-group input-group-merge">
-                          <span id="basic-icon-default-description" class="input-group-text">
-                            <i class="bx bx-detail"></i>
-                          </span>
-                          <input
-                            type="text"
-                            id="product_information"
-                            name="product_information"
-                            class="form-control"
-                            placeholder="Type Here..."
-                            aria-label=""
-                            aria-describedby=""
-                            required
-                            value="{{ $product->product_information }}" 
-                          />
+                          <span id="basic-icon-default-description" class="input-group-text"
+                            ><i class="bx bx-detail"></i
+                          ></span>
+                          
+                          {{-- <input
+                          type="text"
+                          id="description"
+                          name="description"
+                          class="form-control"
+                          placeholder="Type Here..."
+                          aria-label=""
+                          aria-describedby=""
+                          required
+                      /> --}}
+
+                      <!-- Textarea Element -->
+                      <textarea class="form-control" name="description" id="description" cols="30" rows="4" placeholder="Type Here..." aria-label="" aria-describedby="" required></textarea>
                         </div>
                       </div>
-                      
 
                       <div class="mb-3">
-                        <label class="form-label" for="basic-icon-default-material_used">Material Used (Optional)</label>
+                        <label class="form-label" for="basic-icon-default-description">Material Used (Optional)</label>
                         <div class="input-group input-group-merge">
-                          <span id="basic-icon-default-material_used" class="input-group-text">
-                            <i class="bx bx-detail"></i>
-                          </span>
+                          <span id="basic-icon-default-description" class="input-group-text"
+                            ><i class="bx bx-detail"></i
+                          ></span>
+                          
                           <input
                             type="text"
                             id="material_used"
-                            name="material_used"
+                            name = "material_used"
                             class="form-control"
                             placeholder="Type Here..."
                             aria-label=""
                             aria-describedby=""
-                            required
-                            value="{{ $product->material_used }}" <!-- Add the value here -->
-                          />
+                            required/>
                         </div>
                       </div>
-                      
                       <!--
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-fullname">Quantity</label>
@@ -383,9 +366,8 @@
                         </div>
                       </div>
                       -->
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
-                      <button type="button" class="btn btn-secondary" onclick="window.location.href='/admin/dashboard/item/view';">Cancel</button>
-                      
+                      <button type="submit" class="btn btn-primary">Post</button>
+                      <button type="submit" class="btn btn-secondary">Cancel</button>
                     </form>
                   </div>
                 </div>
@@ -423,25 +405,25 @@
     </div>
     <!-- / Layout wrapper -->
 
- <!-- Core JS -->
-<!-- build:js assets/vendor/js/core.js -->
-<script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
-<script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
-<script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
-<script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+     <!-- build:js assets/vendor/js/core.js -->
+     <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
+    <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-<script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
-<!-- endbuild -->
+    <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
+    <!-- endbuild -->
 
-<!-- Vendors JS -->
+    <!-- Vendors JS -->
 
-<!-- Main JS -->
-<script src="{{ asset('assets/js/main.js') }}"></script>
+    <!-- Main JS -->
+    <script src="{{ asset('assets/js/main.js')}}"></script>
 
-<!-- Page JS -->
+    <!-- Page JS -->
 
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
