@@ -49,6 +49,7 @@
  <div class="layout-wrapper layout-content-navbar">
  <div class="layout-wrapper layout-content-navbar">
 <div class="layout-container">
+
 @include('pages.new-admin.sidebar') 
         <!-- Layout container -->
         <div class="layout-page">
@@ -86,7 +87,7 @@
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
-                    <img src="../assets/img/avatars/blank grey.png" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="{{ asset('assets/img/avatars/blank grey.png') }}" alt class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -206,7 +207,8 @@
                       <td class="text-start">{{ $product['category'] }}</td>
                       <td class="text-center">{{ $product['price'] }}</td>
                       <td class="text-start description-cell">{{ $product['description'] }}</td>
-                      <td class="text-start description-cell"><img src="{{ $product['image_file'] }}" alt="" style="height: 50px"></td>
+                      <td class="text-start description-cell"><img src="{{ $product['image_file'] }}" alt="" style="height: 50px;
+                             width: 50px; "></td>
 
                     </tr>
                   
@@ -234,6 +236,8 @@
           </div
     </div>
   </div>
+</div>
+</div>
 </div>
 </div>
 </div>
