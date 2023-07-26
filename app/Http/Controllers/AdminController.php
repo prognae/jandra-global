@@ -238,11 +238,15 @@ class AdminController extends Controller
         $productCategory = $request->input('category');
         $productPrice = $request->input('price');
         $productDescription = $request->input('description');
+        $shopLink = $request->input('shop_link');
+        $productInformation = $request->input('product_information');
+        $materialUsed = $request->input('material_used');
         
         // Use the DB facade to execute the raw PostgreSQL query to update the product
         $updateProduct = DB::update(
             "UPDATE public.products 
-            SET name = :name, category = :category, price = :price, description = :description 
+            SET name = :name, category = :category, price = :price, description = :description, 
+            shop_link = :shop_link,  product_information = :product_information, material_used = :material_used
             WHERE id = :id",
             [
                 'id' => $id,
@@ -250,6 +254,9 @@ class AdminController extends Controller
                 'category' => $productCategory,
                 'price' => $productPrice,
                 'description' => $productDescription,
+                'shop_link' => $shopLink,
+                'product_information' => $productDescription,
+                'material_used' => $materialUsed
             ]
         );
 

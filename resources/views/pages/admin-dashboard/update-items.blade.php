@@ -55,69 +55,7 @@
         @include('pages.new-admin.sidebar') 
         <!-- Menu -->
 
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-          <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
-                <img src="{{ asset('assets/img/favicon/jandra.pn') }}g" class="image-size" alt="">
-
-
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-              <i class="bx bx-chevron-left bx-sm align-middle"></i>
-            </a>
-          </div>
-
-          <div class="menu-inner-shadow"></div>
-
-          <ul class="menu-inner py-1">
-            <!-- Dashboard -->
-            <li class="menu-item">
-              <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
-              </a>
-            </li>
-            <!-- Products -->
-            <li class="menu-item active">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-calendar-event"></i>
-                <div data-i18n="Products">Products</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="products.html" class="menu-link">
-                    <div data-i18n="Basic Inputs">Item List</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="input-item.html" class="menu-link">
-                    <div data-i18n="Input groups">New Item</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <!-- End Products -->
-            <!-- Events -->
-            <li class="menu-item ">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                  <i class="menu-icon tf-icons bx bx-calendar-event"></i>
-                  <div data-i18n="Products">Events</div>
-                </a>
-                <ul class="menu-sub">
-                  <li class="menu-item">
-                    <a href="events.html" class="menu-link">
-                      <div data-i18n="Basic Inputs">View Event</div>
-                    </a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="add-events.html" class="menu-link">
-                      <div data-i18n="Input groups">Add Event</div>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <!-- End Events -->
-          </ul>
-        </aside>
+        
         <!-- / Menu -->
 
         <!-- Layout container -->
@@ -194,7 +132,6 @@
                     <small class="text-muted float-end">Input Product details</small>
                   </div>
                   <div class="card-body">
-                    <form>
                       
                       <!-- Upload Thumbnail-->
                         <!-- <div class="mb-3">
@@ -213,9 +150,9 @@
                         <!--Upload Product Images-->
 
  <!-- Your form to edit the product -->
-        <form method="POST" action="{{ route('product.update', $product->id) }}">
+        {{-- <form method="POST" action="{{ route('product.update', $product->id) }}"> --}}
+          <form method="POST" action="/admin/product/update/{{ $product->id }}">
           @csrf
-          @method('PUT')
 
 <!--Listing ID-->
           <div class="mb-3">
@@ -246,7 +183,7 @@
                 type="text"
                 class="form-control"
                 id="basic-icon-default-fullname"
-                name="id"
+                name="name"
                 placeholder="Item Id"
                 value="{{ $product->name }}"
                 required
@@ -256,14 +193,14 @@
 
                       <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Category</label>
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                        <select class="form-select" id="exampleFormControlSelect1" name="category" aria-label="Default select example">
                           <option selected>Dental Supply</option>
-                          <option value="1">Figurines</option>
-                          <option value="2">Lab Gowns</option>
-                          <option value="3">Masks</option>
-                          <option value="3">Medicines</option>
-                          <option value="3">Stuffed Toys</option>
-                          <option value="3">Others</option>
+                          <option>Figurines</option>
+                          <option>Lab Gowns</option>
+                          <option>Masks</option>
+                          <option>Medicines</option>
+                          <option>Stuffed Toys</option>
+                          <option>Others</option>
                         </select>
                       </div>
 
@@ -299,6 +236,7 @@
                             id="shop_link"
                             name = "shop_link"
                             placeholder="Insert Product Link Here..."
+                            value="{{ $product->shop_link }}"
                             aria-label=""
                             aria-describedby=""
                             required/>
@@ -307,11 +245,9 @@
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-description">Main Description</label>
                         <div class="input-group input-group-merge">
-                          <span id="basic-icon-default-description" class="input-group-text"
-                            ><i class="bx bx-detail"></i
-                          ></span>
                           
-                          <input
+                          
+                          <textarea
                             type="text"
                             id="description"
                             name = "description"
@@ -319,7 +255,7 @@
                             placeholder="Type Here..."
                             aria-label=""
                             aria-describedby=""
-                            value="{{ $product->description }}" required>
+                            required>{{ $product->description }}
                           </textarea>
                         </div>
                       </div>
@@ -327,10 +263,8 @@
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-description">Product Information (Optional)</label>
                         <div class="input-group input-group-merge">
-                          <span id="basic-icon-default-description" class="input-group-text">
-                            <i class="bx bx-detail"></i>
-                          </span>
-                          <input
+                          
+                          <textarea
                             type="text"
                             id="product_information"
                             name="product_information"
@@ -338,9 +272,8 @@
                             placeholder="Type Here..."
                             aria-label=""
                             aria-describedby=""
-                            required
-                            value="{{ $product->product_information }}" 
-                          />
+                            required>{{ $product->product_information }}
+                          </textarea>
                         </div>
                       </div>
                       
@@ -348,10 +281,8 @@
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-material_used">Material Used (Optional)</label>
                         <div class="input-group input-group-merge">
-                          <span id="basic-icon-default-material_used" class="input-group-text">
-                            <i class="bx bx-detail"></i>
-                          </span>
-                          <input
+                          
+                          <textarea
                             type="text"
                             id="material_used"
                             name="material_used"
@@ -359,9 +290,8 @@
                             placeholder="Type Here..."
                             aria-label=""
                             aria-describedby=""
-                            required
-                            value="{{ $product->material_used }}" <!-- Add the value here -->
-                          />
+                            required>{{ $product->material_used }}
+                          </textarea>
                         </div>
                       </div>
                       

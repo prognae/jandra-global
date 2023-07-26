@@ -47,7 +47,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkSessionLogin'], functio
     Route::post('product/create', [AdminController::class, 'addProduct'])->name('product.create');
 
     Route::get('product/edit/{id}', [AdminController::class, 'showData'])->name('product.edit');
-    Route::put('product/update/{id}', [AdminController::class, 'update'])->name('product.update');
+    Route::post('product/update/{id}', [AdminController::class, 'update'])->name('product.update');
     Route::delete('product/delete/{id}', [AdminController::class, 'delete'])->name('product.delete');
 
     // Route::get('/pagination/paginate-data', [AdminController::class, 'pagination']);
