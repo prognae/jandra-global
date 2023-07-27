@@ -85,10 +85,11 @@
                 <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Discover high-quality White - Jandra Surgical Masks for superior protection and comfort.</p>
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-pinterest"></i></a>
-                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.facebook.com/Jandra.PH"><i class="fa fa-facebook"></i></a>
+                  <a href="https://www.instagram.com/jandra.ph/?hl=en"><i class="fa fa-instagram"></i></a>
+                  <a href="https://shopee.ph/jandra.ph"><i class="fa fa-shopping-cart"></i></a>
+                  <!-- <<a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-pinterest"></i></a> -->
                 </div>
               </div>
             </div>
@@ -241,7 +242,7 @@
                 <div class="col-lg-7 offset-lg-4">
                     <div class="banner__item">
                         <div class="banner__item__pic">
-                            <img src="img/banner/banner-4.png" alt="">
+                            <img src="img/banner/banner-face.png" alt="">
                         </div>
                         <div class="banner__item__text">
                             <h2>Mask Collections 2023</h2>
@@ -252,7 +253,7 @@
                 <div class="col-lg-5">
                     <div class="banner__item banner__item--middle">
                         <div class="banner__item__pic">
-                            <img src="img/banner/banner-5.png" alt="">
+                            <img src="img/banner/banner-8.png" alt="">
                         </div>
                         <div class="banner__item__text">
                             <h2>Stuffed Toys</h2>
@@ -263,7 +264,7 @@
                 <div class="col-lg-7">
                     <div class="banner__item banner__item--last">
                         <div class="banner__item__pic">
-                            <img src="img/banner/banner-6.png" alt="">
+                            <img src="img/banner/banner-face2.png" alt="">
                         </div>
                         <div class="banner__item__text">
                             <h2>Surgical Mask</h2>
@@ -472,7 +473,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="categories__hot__deal">
-                        <img src="img/pproduct-sale.png" alt="">
+                        <img src="img/banner/banner-7.png" alt="">
                         <div class="hot__deal__sticker">
                             <span>Sale Of</span>
                             <h5>₱249.99</h5>

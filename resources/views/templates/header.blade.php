@@ -42,7 +42,7 @@
                         @endif
                         <li class="{{ request()->is('/') ? 'active' : '' }}" id="homeLink"><a href="/">Home</a></li>
                         <li class="{{ request()->is('shop') ? 'active' : '' }}" id="shopLink"><a href="/shop">Shop</a></li>
-                        <li class="{{ request()->is('showcase') ? 'active' : '' }}" id="showcaseLink"><a href="/showcase">Showcase</a></li>
+                        <!-- <li class="{{ request()->is('showcase') ? 'active' : '' }}" id="showcaseLink"><a href="/showcase">Showcase</a></li> -->
                         <li class="{{ request()->is('blog') ? 'active' : '' }}" id="blogLink"><a href="/events">Events</a></li>
                         <li class="{{ request()->is('about') ? 'active' : '' }}" id="aboutLink"><a href="/about">About Us</a> </li>
                     </ul>

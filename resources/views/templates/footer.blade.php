@@ -1,5 +1,5 @@
-        <!-- Footer Section Begin -->
-        <footer class="footer">
+<!-- Footer Section Begin -->
+<footer class="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6">
@@ -26,12 +26,14 @@
                         <div class="footer__widget">
                             <h6>Shopping</h6>
                             <ul>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Payment Methods</a></li>
-                                <li><a href="#">Delivery</a></li>
+                                <li><a href="https://www.facebook.com/Jandra.PH">Facebook</a></li>
+                                <li><a href="https://shopee.ph/jandra.ph">Instagram</a></li>
+                                <li><a href="https://www.instagram.com/jandra.ph">Shopee</a></li>
+                                <!--<li><a href="#">Delivery</a></li>-->
                             </ul>
                         </div>
                     </div>
+                <!--
                     <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
                         <div class="footer__widget">
                             <h6>NewLetter</h6>
@@ -45,6 +47,7 @@
                         </div>
                     </div>
                 </div>
+                -->
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="Admin_Login">
