@@ -46,7 +46,6 @@
 </head>
 
  <!-- Layout wrapper -->
-
  <div class="layout-wrapper layout-content-navbar">
 <div class="layout-container">
 
@@ -128,40 +127,13 @@
 
     <div class="col-8 mt-1">
         <div class="container-xxl flex-grow-1 container-p-y">
-          <h4 class="fw-bold py-3 mb-2"><span class="text-muted fw-light"> </span> Listed Products</h4>
+          <h4 class="fw-bold py-3 mb-2"><span class="text-muted fw-light"> </span> Listed Events</h4>
           <div>
             @if (session('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
             @endif
-          </div>
-          <div class="container-sm px-0">
-            <div class="row">
-
-              <div class="col-sm-6 ">
-                <input type="text" name="search" id="search" class="form-control" placeholder="Search products...">
-              </div>
-            
-              <div class="col-sm-6 ">
-                <form action="{{ url('/admin/dashboard/item/view') }}" method="GET" class="d-flex justify-content-end">
-                  <div class="form-group mx-3">
-                    <select name="category" class="form-select bg-light" onchange="this.form.submit()">
-                      <option value="" disabled selected hidden>Filter Category</option>
-                      <option value="Dental Supply">Dental Supply</option>
-                      <option value="Figurines">Figurines</option>
-                      <option value="Lab Gowns">Lab Gowns</option>
-                      <option value="Masks">Masks</option>
-                      <option value="Medicines">Medicines</option>
-                      <option value="Stuffed Toys">Stuffed Toys</option>
-                      <option value="Others">Others</option>
-                    </select>                    
-                  
-                  </div>
-                </form>
-              </div>
-            
-            </div>    
           </div>
 
           <div class="card">
@@ -171,54 +143,47 @@
                 <thead>
                   <tr class="text-nowrap">
                     <th class="text-center py-4">Actions</th>
-                    <th class="text-center py-4">Product ID</th>
-                    <th class="text-start py-4">Product Name</th>
-                    <th class="text-start py-4">Category</th>
-                    <th class="text-center py-4">Listing Price</th>
+                    <th class="text-start py-4">Event Title</th>
                     <th class="text-start py-4">Description</th>
-                    <th class="text-start py-4">Product Image</th>
+                    <th class="text-start py-4">Event Date</th>
+                    <th class="text-start py-4">Event Image</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($products as $product)
-                    <tr>
-                      <td class="d-flex justify-content-center">
-                        <a href="{{ route('product.edit', ['id' => $product['id']]) }}" class="btn btn-primary edit-btn p-auto mx-1">
-                          <span class="tf-icons bx bx-edit"></span>
-                        </a>
-                        
-                        <!-- Add a form to delete the item -->
-                        <form action="{{ route('product.delete', ['id' => $product['id']]) }}" method="POST" class="d-inline p-0">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" onclick="return confirmDelete(event)" title="Delete Item" class="btn btn-secondary edit-btn p-auto mx-1">
-                            <span class="tf-icons bx bx-trash"></span>
-                          </button>
-                        </form>
-                      </td>
-                      <td class="text-center">{{ $product['id'] }}</td>
-                      <td class="text-start"><a href="/shop/view/{{ $product['id'] }}">{{ $product['name'] }} </a></td>
-                      <td class="text-start">{{ $product['category'] }}</td>
-                      <td class="text-center">{{ $product['price'] }}</td>
-                      <td class="text-start description-cell">{{ $product['description'] }}</td>
-                      <td class="text-start description-cell"><img src="{{ $product['image_file'] }}" alt="" style="height: 50px;
-                             width: 50px; "></td>
-
-                    </tr>
-                  
-                    
-                  @endforeach
+                  @foreach($events as $event)
+                  <tr>
+                    <td class="d-flex justify-content-center">
+                      <a href="{{ route('event.edit', ['id' => $event->id]) }}" class="btn btn-primary edit-btn p-auto mx-1">
+                        <span class="tf-icons bx bx-edit"></span>
+                      </a>
+                
+                      <!-- Add a form to delete the item -->
+                      <form action="{{ route('event.delete', ['id' => $event->id]) }}" method="POST" class="d-inline p-0">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirmDelete(event)" title="Delete Item" class="btn btn-secondary edit-btn p-auto mx-1">
+                          <span class="tf-icons bx bx-trash"></span>
+                        </button>
+                      </form>
+                    </td>
+                    <td class="text-start">{{ $event->event_name }} </a></td>
+                    <td class="text-start description-cell">{{ $event->event_description }}</td>
+                    <td class="text-start">{{ $event->event_date }}</td>
+                    <td class="text-start description-cell"><img src="{{ $event->event_image }}" alt="" style="height: 50px; width: 50px;"></td>
+                  </tr>
+                @endforeach
+                
                 </tbody>
               </table>
 
-                <div class="col-md-12 px-3">
+                {{-- <div class="col-md-12 px-3">
                   <nav aria-label="Page navigation ">
                     <ul class="pagination justify-content-end">
-                      <!-- Use the links provided by the $products Paginator instance -->
-                      {!! $products->links() !!}
+
+                      {!! $events->links() !!}
                     </ul>
                   </nav>
-                </div>
+                </div> --}}
 
               
           </div>

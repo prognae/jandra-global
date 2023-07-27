@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Cloudinary\Cloudinary;
 //
 use Illuminate\Http\Request;
@@ -90,7 +91,7 @@ class AdminController extends Controller
     //     return view('pages.admin-dashboard.listed-items', ['products' => $paginator]);
     // }
 
-// ...
+    // ...
 
     // public function displayListedItems(Request $request)
     // {
@@ -433,5 +434,74 @@ class AdminController extends Controller
         return redirect('/admin/dashboard');
     }
 
+    public function displayListedEvents() {
+        $this->data['events'] = $events = DB::select("SELECT * FROM public.event");
+        // dd($events);
+        return view('pages.admin-dashboard.listed-events', $this->data);
+    }
+    
+    public function deleteEvent($id)
+    {
+        // Use the DB facade to execute the raw PostgreSQL query to delete the product
+        $deleteProduct = DB::delete("DELETE FROM public.event WHERE id = :id", ['id' => $id]);
+    
+        // Check if the product was successfully deleted
+        if ($deleteProduct) {
+            // Redirect back to the previous page
+            return back()->with('success', 'Product deleted successfully!');
+        } else {
+            // If the deletion fails, you can handle the error or redirect to an error page.
+            // For example:
+            abort(500); // Return a 500 Internal Server Error page.
+        }
+    }
+    public function showDataEvent(Request $request, $id)
+    {
+        // Use the DB facade to execute the raw PostgreSQL query
+        $events = DB::select("SELECT * FROM public.event WHERE id = :id", ['id' => $id]);
+    
+        // Since DB::select() returns an array of objects, we need to check if the result is not empty
+        if (!empty($events)) {
+            $events = $events[0]; // Extract the first result from the array
+        } else {
+            // If the product with the given ID is not found, you can handle the error or redirect to an error page.
+            // For example:
+            abort(404); // Return a 404 Not Found error page.
+        }
+    
+        // Pass the $product object to the view using compact()
+        return view('pages.admin-dashboard.update-events', compact('events'));
+    }
+    
+
+    public function updateEvent(Request $request, $id)
+    {
+        $eventName = $request->input('event_name');
+        $eventDate = $request->input('event_date');
+        $eventDescription = $request->input('event_description');
+   
+        // Use the DB facade to execute the raw PostgreSQL query to update the product
+        $updateEvent = DB::update(
+            "UPDATE public.event 
+            SET event_name = :event_name, event_date = :event_date, event_description = :event_description
+            WHERE id = :id",
+            [
+                'id' => $id,
+                'event_name' => $eventName,
+                'event_date' => $eventDate,
+                'event_description' => $eventDescription
+            ]
+        );
+
+        // Check if the product was successfully updated
+        if ($updateEvent) {
+            // Redirect to a success page or the updated product page
+            return redirect(route('admin.ListedEvents'))->with('success', 'Event updated successfully!');
+        } else {
+            // If the update fails, you can handle the error or redirect to an error page.
+            // For example:
+            abort(500); // Return a 500 Internal Server Error page.
+        }
+    }
 }
 

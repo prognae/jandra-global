@@ -48,8 +48,8 @@
                 </a>
                 <ul class="menu-sub">
                   <li class="menu-item">
-                    <a href="/admin/dashboard/event/view" class="menu-link">
-                      <div data-i18n="Basic Inputs">View Event</div>
+                    <a href="{{ route('admin.ListedEvents') }}" class="menu-link">
+                      <div data-i18n="Basic Inputs">View Events</div>
                     </a>
                   </li>
                   <li class="menu-item">

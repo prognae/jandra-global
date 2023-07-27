@@ -49,8 +49,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkSessionLogin'], functio
     Route::get('product/edit/{id}', [AdminController::class, 'showData'])->name('product.edit');
     Route::post('product/update/{id}', [AdminController::class, 'update'])->name('product.update');
     Route::delete('product/delete/{id}', [AdminController::class, 'delete'])->name('product.delete');
-
-    // Route::get('/pagination/paginate-data', [AdminController::class, 'pagination']);
     Route::get('product/search', [AdminController::class, 'search'])->name('product.search');
 
  
@@ -59,6 +57,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkSessionLogin'], functio
     //Route for events
     Route::get('dashboard/event/add', [AdminController::class, 'displayEventForms']);
     Route::post('dashboard/event/add', [AdminController::class, 'createEvent']);
+
+    Route::get('dashboard/event/view', [AdminController::class, 'displayListedEvents'])->name('admin.ListedEvents');
+    Route::delete('event/delete/{id}', [AdminController::class, 'deleteEvent'])->name('event.delete');
+    Route::get('event/edit/{id}', [AdminController::class, 'showDataEvent'])->name('event.edit');
+    Route::post('event/update/{id}', [AdminController::class, 'updateEvent'])->name('event.update');
 });
 
 //Logout Route
