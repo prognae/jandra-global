@@ -169,7 +169,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item" href="/logout">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -232,7 +232,7 @@
             
             <!-- / Content -->
 
-                        <!-- Footer -->
+                        <!-- Footer 
                         <footer class="content-footer footer bg-footer-theme">
                           <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                             <div class="mb-2 mb-md-0">
@@ -247,7 +247,7 @@
                             </div>
                           </div>
                         </footer>
-                        <!-- / Footer -->
+                         Footer -->
 
             <div class="content-backdrop fade"></div>
           </div>

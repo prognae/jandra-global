@@ -116,7 +116,6 @@
     <li>Exclusive partnerships with renowned companies</li>
     <li>Commitment to customer satisfaction</li>
   </ul>
-
 </div>
                 </div>
             </div>
@@ -181,16 +180,16 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="team__item">
-                        <img src="img/about/team-1.jpg" alt="">
-                        <h4>---------</h4>
-                        <span>Big Bossn</span>
+                        <img src="img/about/dess.jpg" alt="" style="height: 350px;">
+                        <h4>Dess Villaroman</h4>
+                        <span>President</span>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="team__item">
-                        <img src="img/about/team-2.jpg" alt="">
-                        <h4>C----</h4>
-                        <span>C.E.O</span>
+                        <img src="img/about/leandra.png" alt="" style="height: 350px;">
+                        <h4>Leandra Pilar Villaroman</h4>
+                        <span>Vice President</span>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
