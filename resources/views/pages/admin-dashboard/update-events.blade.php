@@ -185,7 +185,7 @@
   
 
           <h4 style="text-align: left;">Event Description</h4>
-          <textarea class="form-control" name="event_description" id="description" cols="30" rows="4" placeholder="Event Description (Optional)" value="{{ $events->event_description }}" ></textarea>
+          <textarea class="form-control" name="event_description" id="description" cols="30" rows="4" placeholder="Event Description (Optional)">{{ $events->event_description }}</textarea>
 
           <br>
 

@@ -107,6 +107,12 @@
                         <span class="align-middle">Log Out</span>
                       </a>
                     </li>
+                    <li>
+                      <a class="dropdown-item" href="/admin/change/password">
+                        <i class="bx bx-edit me-2"></i>
+                        <span class="align-middle">Change Password</span>
+                      </a>
+                    </li>
                   </ul>
                 </li>
                 <!--/ User -->

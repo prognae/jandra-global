@@ -10,7 +10,11 @@ class HomeController extends Controller
     //
     public function displayHomepage() {
         $newArrivals = DB::select('SELECT * FROM public.products ORDER BY updated_at DESC LIMIT 4');
-        return view('pages.homepage', ['newArrivals'=>$newArrivals]);
+        $events = DB::table('public.event')
+        ->orderByDesc('event_date')
+        ->limit(3)
+        ->get();
+        return view('pages.homepage', ['newArrivals'=>$newArrivals, 'events' => $events]);
     }    
 
     public function displayShowcase() {

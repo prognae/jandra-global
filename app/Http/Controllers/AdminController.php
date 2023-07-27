@@ -431,7 +431,7 @@ class AdminController extends Controller
                                     VALUES(:event_name, :event_image, :event_description, :event_date)',
                                     ['event_name'=>$eventName, 'event_image'=>$imageUrl, 'event_description'=>$eventDescription, 'event_date'=>$eventDate]);
         }
-        return redirect('/admin/dashboard');
+        return redirect('/admin/dashboard/event/view');
     }
 
     public function displayListedEvents() {
@@ -501,6 +501,41 @@ class AdminController extends Controller
             // If the update fails, you can handle the error or redirect to an error page.
             // For example:
             abort(500); // Return a 500 Internal Server Error page.
+        }
+    }
+
+    public function displayChangePassword() {
+        return view('pages.admin-dashboard.change_password');
+    }
+
+    public function changePassword(Request $request) {
+        $currentPasswordInput = $request->input('currentPassword');
+        $newPassword = $request->input('newPassword1');
+        $repeatNewPassword = $request->input('newPassword2');
+
+        // Compare input fields
+        if(strcmp($newPassword, $repeatNewPassword) !== 0) {
+            return redirect()->back()->with('error', 'The new passwords do not match');            
+        }
+        else if(strcmp($newPassword, $repeatNewPassword) === 0) {
+            $oldPassword = DB::table('public.account')
+            ->select('password')
+            ->where('username', '=', session()->get('username'))
+            ->get();
+
+            // Check if the old password and the hashed password in the database is the same
+            if(Hash::check($currentPasswordInput, $oldPassword[0]->password)) {
+                $hashedNewPassword = Hash::make($newPassword);
+                // DB::update('UPDATE public.account SET password = :password WHERE account_id = :id', ['password' => $hashedNewPassword, 'id' => session()->get('account_id')]);
+                $updatePass = DB::table('public.account')
+                ->where('username', '=', session()->get('username'))
+                ->update(['password' => $hashedNewPassword]);
+                
+                return redirect('/admin/dashboard');
+            }
+            else {
+                return redirect()->back()->with('error', 'Entered password does not match current password.');
+            }
         }
     }
 }

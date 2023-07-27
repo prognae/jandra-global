@@ -134,10 +134,12 @@
                     <small class="text-muted float-end">Input Event details</small>
                   </div>
                   <div class="card-body">
-                    <form>
+                    <form action="/admin/dashboard/event/add" method="post">
+                      @csrf
                         <div class="mb-3">
                             <label for="formFileMultiple" class="form-label">Add Event Photos</label>
-                            <input class="form-control" type="file" id="formFileMultiple" multiple />
+                            <input class="form-control" type="file" id="imageFile" name="imageFile" />                            
+                            <input type="hidden" id="imageFileb64" name="imageFileb64">
                         </div>
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-fullname">Event Title</label>
@@ -149,6 +151,7 @@
                             type="text"
                             class="form-control"
                             id="title"
+                            name="name"
                             placeholder="Type Here..."
                             aria-label=""
                             aria-describedby=""
@@ -165,6 +168,7 @@
                             type="text"
                             class="form-control"
                             id="title"
+                            name="description"
                             placeholder="Type Here..."
                             aria-label=""
                             aria-describedby=""
@@ -174,11 +178,11 @@
                       <div class="mb-3">
                         <label for="html5-date-input" class="col-md-2 col-form-label">Event Date</label>
                         <div class="input-group input-group-merge">
-                          <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
+                          <input class="form-control" type="date" name="event_date" value="" id="html5-date-input" />
                         </div>
                       </div>
                       <button type="submit" class="btn btn-primary">Post</button>
-                      <button type="submit" class="btn btn-secondary">Cancel</button>
+                      <button type="button" class="btn btn-secondary" onclick="window.location.href='/admin/dashboard'">Cancel</button> 
                     </form>
                   </div>
                 </div>
@@ -221,4 +225,17 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
+  <script>
+    function readFile() { 
+      if (!this.files || !this.files[0]) return;         
+      const FR = new FileReader();
+         
+      FR.addEventListener("load", function(evt) {
+         document.querySelector("#imageFileb64").value = evt.target.result;
+      });          
+      FR.readAsDataURL(this.files[0]);      
+      }
+
+      document.querySelector("#imageFile").addEventListener("change", readFile);
+  </script>
 </html>

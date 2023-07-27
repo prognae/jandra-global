@@ -38,6 +38,8 @@ Route::get('/about', [HomeController::class, 'displayAbout']);
 Route::get('/admin/login', [AdminController::class, 'adminLogin']);
 Route::post('/admin/login', [AdminController::class, 'adminValidateLogin']);
 
+
+
 //Admin route group
 Route::group(['prefix' => 'admin', 'middleware' => 'checkSessionLogin'], function () { 
     Route::get('dashboard', [AdminController::class, 'displayDashboard']);
@@ -62,6 +64,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkSessionLogin'], functio
     Route::delete('event/delete/{id}', [AdminController::class, 'deleteEvent'])->name('event.delete');
     Route::get('event/edit/{id}', [AdminController::class, 'showDataEvent'])->name('event.edit');
     Route::post('event/update/{id}', [AdminController::class, 'updateEvent'])->name('event.update');
+
+    Route::get('/change/password', [AdminController::class, 'displayChangePassword']);
+    Route::post('/change/password', [AdminController::class, 'changePassword']);
 });
 
 //Logout Route
