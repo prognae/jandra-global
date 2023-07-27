@@ -82,43 +82,24 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="{{ $product[0]->image_file }}">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="{{ $product[0]->image_file }}">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="{{ $product[0]->image_file }}">
-                                    </div>
-                                </a>
-                            </li>                        
+                            @foreach ($productPhotos as $photo)
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                        <div class="product__thumb__pic set-bg" data-setbg="{{ $photo->image_url }}">
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach        
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-9">
-                        <div class="tab-content">
+                        <div class="tab-content">                
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__pic__item">
                                     <img src="{{ $product[0]->image_file }}" alt="">
                                 </div>
                             </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="{{ $product[0]->image_file }}" alt="">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="{{ $product[0]->image_file }}" alt="">
-                                </div>
-                            </div>
+                            
                             
                             
                         </div>

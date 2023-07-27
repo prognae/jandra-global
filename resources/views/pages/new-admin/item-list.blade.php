@@ -135,20 +135,26 @@
                     <small class="text-muted float-end">Input Product details</small>
                   </div>
                   <div class="card-body">
-                    <form>
+                    <form method="POST" action="{{ route('product.create') }}">
+                      @csrf
                       <!--Upload Thumbnail-->
                         <div class="mb-3">
                             <label for="formFileMultiple" class="form-label">Upload Product Thumbnail</label>
-                            <input class="form-control" type="file" id="formFileMultiple" multiple />
+                            <input class="form-control" type="file" id="imageFileMain" required />
+                            <input type="hidden" id="imageFileb64-main" name="imageFileb64-main">
                         </div>
                       <!--Upload Thumbnail-->
 
                         <!--Upload Product Images-->
                         <div class="mb-3">
                           <label for="formFileMultiple" class="form-label">Add Product Photos</label>
-                          <input class="form-control" type="file" id="formFileMultiple" multiple />
-                          <input class="form-control" type="file" id="formFileMultiple" multiple />
-                          <input class="form-control" type="file" id="formFileMultiple" multiple />
+                          <input class="form-control" type="file" id="imageFile1"  />
+                          <input class="form-control" type="file" id="imageFile2"  />
+                          <input class="form-control" type="file" id="imageFile3"  />
+
+                          <input type="hidden" id="imageFileb64-1" name="imageFileb64-1">
+                          <input type="hidden" id="imageFileb64-2" name="imageFileb64-2">
+                          <input type="hidden" id="imageFileb64-3" name="imageFileb64-3">
                         </div>
                         <!--Upload Product Images-->
 
@@ -172,14 +178,14 @@
 
                       <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Category</label>
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                        <select class="form-select" name="category" id="exampleFormControlSelect1" aria-label="Default select example" required>
                           <option selected>Dental Supply</option>
-                          <option value="1">Figurines</option>
-                          <option value="2">Lab Gowns</option>
-                          <option value="3">Masks</option>
-                          <option value="3">Medicines</option>
-                          <option value="3">Stuffed Toys</option>
-                          <option value="3">Others</option>
+                          <option>Figurines</option>
+                          <option>Lab Gowns</option>
+                          <option>Masks</option>
+                          <option>Medicines</option>
+                          <option>Stuffed Toys</option>
+                          <option>Others</option>
                         </select>
                       </div>
 
@@ -216,30 +222,17 @@
                             placeholder="Insert Product Link Here..."
                             aria-label=""
                             aria-describedby=""
-                            required/>
+                            />
                         </div>
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-description">Main Description</label>
-                        <div class="input-group input-group-merge">
-                          <span id="basic-icon-default-description" class="input-group-text"
-                            ><i class="bx bx-detail"></i
-                          ></span>
+                        <div class="input-group input-group-merge">                         
                          
                       
-                      <input
-                          type="text"
-                          id="description"
-                          name="description"
-                          class="form-control"
-                          placeholder="Type Here..."
-                          aria-label=""
-                          aria-describedby=""
-                          required
-                      />
+                          <textarea class="form-control" name="description" id="description" cols="30" rows="4" placeholder="Short Description" required></textarea>
 
                       <!-- Textarea Element -->
-                      <textarea class="form-control" name="description" id="description" cols="30" rows="4" placeholder="Type Here..." aria-label="" aria-describedby="" required></textarea>
 
 
                         </div>
@@ -248,9 +241,7 @@
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-description">Product Information (Optional)</label>
                         <div class="input-group input-group-merge">
-                          <span id="basic-icon-default-description" class="input-group-text"
-                            ><i class="bx bx-detail"></i
-                          ></span>
+                        
                           
                           {{-- <input
                           type="text"
@@ -264,26 +255,17 @@
                       /> --}}
 
                       <!-- Textarea Element -->
-                      <textarea class="form-control" name="description" id="description" cols="30" rows="4" placeholder="Type Here..." aria-label="" aria-describedby="" required></textarea>
+                      <textarea class="form-control" name="product_information" id="product_information" cols="30" rows="4" placeholder="Detailed Information" aria-label="" aria-describedby="" ></textarea>
                         </div>
                       </div>
 
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-description">Material Used (Optional)</label>
                         <div class="input-group input-group-merge">
-                          <span id="basic-icon-default-description" class="input-group-text"
-                            ><i class="bx bx-detail"></i
-                          ></span>
                           
-                          <input
-                            type="text"
-                            id="material_used"
-                            name = "material_used"
-                            class="form-control"
-                            placeholder="Type Here..."
-                            aria-label=""
-                            aria-describedby=""
-                            required/>
+                          
+                          <textarea class="form-control" name="material_used" id="material_used" cols="30" rows="4" placeholder="Material Used" aria-label="" aria-describedby="" ></textarea>
+
                         </div>
                       </div>
                       <!--
@@ -364,4 +346,51 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
+
+  <script>
+    function readFileMain() { 
+      if (!this.files || !this.files[0]) return;         
+      const FR = new FileReader();
+         
+      FR.addEventListener("load", function(evt) {
+         document.querySelector("#imageFileb64-main").value = evt.target.result;
+      });          
+      FR.readAsDataURL(this.files[0]);      
+      }
+
+    function readFile1() { 
+      if (!this.files || !this.files[0]) return;         
+      const FR = new FileReader();
+         
+      FR.addEventListener("load", function(evt) {
+         document.querySelector("#imageFileb64-1").value = evt.target.result;
+      });          
+      FR.readAsDataURL(this.files[0]);      
+      }
+
+      function readFile2() { 
+      if (!this.files || !this.files[0]) return;         
+      const FR = new FileReader();
+         
+      FR.addEventListener("load", function(evt) {
+         document.querySelector("#imageFileb64-2").value = evt.target.result;
+      });          
+      FR.readAsDataURL(this.files[0]);      
+      }
+
+      function readFile3() { 
+      if (!this.files || !this.files[0]) return;         
+      const FR = new FileReader();
+         
+      FR.addEventListener("load", function(evt) {
+         document.querySelector("#imageFileb64-3").value = evt.target.result;
+      });          
+      FR.readAsDataURL(this.files[0]);      
+      }
+
+      document.querySelector("#imageFileMain").addEventListener("change", readFileMain);
+      document.querySelector("#imageFile1").addEventListener("change", readFile1);
+      document.querySelector("#imageFile2").addEventListener("change", readFile2);
+      document.querySelector("#imageFile3").addEventListener("change", readFile3);
+  </script>
 </html>

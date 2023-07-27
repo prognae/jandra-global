@@ -22,9 +22,13 @@ class ShopController extends Controller
     public function displayShopItem($id) {
         $product = DB::select('SELECT * FROM public.products WHERE id = :id ORDER BY price ASC', ['id'=>$id]);
 
+        $productPhotos = DB::table('public.product_photo')
+        ->where('product_id', '=', $id)
+        ->get();
+
         $relatedProducts = DB::select("SELECT * FROM public.products WHERE category = :category 
                                         AND id NOT IN (:id) ORDER BY price ASC", ['id'=>$id, 'category'=>$product[0]->category]);
 
-        return view('pages.shop_view', ['product'=>$product, 'relatedProducts'=>$relatedProducts]);
+        return view('pages.shop_view', ['product'=>$product, 'relatedProducts'=>$relatedProducts, 'productPhotos'=>$productPhotos]);
     }
 }

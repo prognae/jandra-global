@@ -162,7 +162,12 @@ class AdminController extends Controller
 
     public function addProduct(Request $request)
     {
-        $imageFile = $request->input('imageFileb64');    //->store('images'),
+        $imageFiles = [];
+        $imageUrls = [];
+        $imageFileMain = $request->input('imageFileb64-main');    //->store('images'),
+        $imageFileAlt1 = $request->input('imageFileb64-1'); 
+        $imageFileAlt2 = $request->input('imageFileb64-2'); 
+        $imageFileAlt3 = $request->input('imageFileb64-3'); 
         $itemName = $request->input('name');
         $itemCategory = $request->input('category');
         $itemPrice = $request->input('price');
@@ -171,6 +176,9 @@ class AdminController extends Controller
         // $itemQty = $request->input('quantity');
         $itemProductInfo = $request->input('product_information');
         $itemMaterialUsed = $request->input('material_used');
+
+        array_push($imageFiles, $imageFileMain, $imageFileAlt1, $imageFileAlt2, $imageFileAlt3);
+        $imageFiles = array_filter($imageFiles);
 
         function uploadImage($image) {
             $cloudinary = new Cloudinary(
@@ -198,16 +206,31 @@ class AdminController extends Controller
             
         }
 
-        $imageUrl = uploadImage($imageFile);
+        foreach($imageFiles as $imageFile) {
+            $imageUrl = uploadImage($imageFile);
+            $imageUrls[] = $imageUrl;
+        }
 
-        if(!$imageUrl) {
+        if(!$imageUrls) {
             abort(404);
         }
-        else if($imageUrl) {
-            $addProduct = DB::insert('INSERT INTO public.products (name, category, price, description, image_file, shop_link, product_information, material_used)
-                                VALUES (:name, :category, :price, :description, :image_file, :shop_link, :product_information, :material_used)',
-                                ['name'=>$itemName, 'category'=>$itemCategory, 'price'=>$itemPrice, 'description'=>$itemDescription,
-                                'image_file'=>$imageUrl, 'shop_link'=>$itemLink, 'product_information'=>$itemProductInfo, 'material_used'=>$itemMaterialUsed]);
+        else if($imageUrls) {
+            // $addProduct = DB::insert('INSERT INTO public.products (name, category, price, description, image_file, shop_link, product_information, material_used)
+            //                     VALUES (:name, :category, :price, :description, :image_file, :shop_link, :product_information, :material_used)',
+            //                     ['name'=>$itemName, 'category'=>$itemCategory, 'price'=>$itemPrice, 'description'=>$itemDescription,
+            //                     'image_file'=>$imageUrls[0], 'shop_link'=>$itemLink, 'product_information'=>$itemProductInfo, 'material_used'=>$itemMaterialUsed]);
+            $addProduct = DB::table('public.products')->insertGetId(['name'=>$itemName, 'category'=>$itemCategory, 'price'=>$itemPrice, 'description'=>$itemDescription,
+                                 'image_file'=>$imageUrls[0], 'shop_link'=>$itemLink, 'product_information'=>$itemProductInfo, 'material_used'=>$itemMaterialUsed]);
+
+            array_shift($imageUrls);
+
+            foreach($imageUrls as $imageUrl) {
+                $addPhotos = DB::table('public.product_photo')->insert([
+                    'product_id' => $addProduct,
+                    'image_url' => $imageUrl
+                ]);
+            }            
+            
         }
         return redirect('/admin/dashboard');
     }
