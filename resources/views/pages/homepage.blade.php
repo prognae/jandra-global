@@ -111,10 +111,11 @@
   <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Discover the stylish and durable Black - ND99 Surgical Mask for ultimate protection and fashion.</p>
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-pinterest"></i></a>
-                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.facebook.com/Jandra.PH"><i class="fa fa-facebook"></i></a>
+                  <a href="https://www.instagram.com/jandra.ph/?hl=en"><i class="fa fa-instagram"></i></a>
+                  <a href="https://shopee.ph/jandra.ph"><i class="fa fa-shopping-cart"></i></a>
+                  <!-- <<a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-pinterest"></i></a> -->
                 </div>
               </div>
             </div>
@@ -133,10 +134,11 @@
                 <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Explore our fun and colorful collection of surgical masks specially designed for kids.</p>
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-pinterest"></i></a>
-                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.facebook.com/Jandra.PH"><i class="fa fa-facebook"></i></a>
+                  <a href="https://www.instagram.com/jandra.ph/?hl=en"><i class="fa fa-instagram"></i></a>
+                  <a href="https://shopee.ph/jandra.ph"><i class="fa fa-shopping-cart"></i></a>
+                  <!-- <<a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-pinterest"></i></a> -->
                 </div>
               </div>
             </div>
@@ -156,10 +158,11 @@
 
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-pinterest"></i></a>
-                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.facebook.com/Jandra.PH"><i class="fa fa-facebook"></i></a>
+                  <a href="https://www.instagram.com/jandra.ph/?hl=en"><i class="fa fa-instagram"></i></a>
+                  <a href="https://shopee.ph/jandra.ph"><i class="fa fa-shopping-cart"></i></a>
+                  <!-- <<a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-pinterest"></i></a> -->
                 </div>
               </div>
             </div>
@@ -180,9 +183,10 @@
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
                   <a href="https://www.facebook.com/Jandra.PH"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-pinterest"></i></a>
                   <a href="https://www.instagram.com/jandra.ph/?hl=en"><i class="fa fa-instagram"></i></a>
+                  <a href="https://shopee.ph/jandra.ph"><i class="fa fa-shopping-cart"></i></a>
+                  <!-- <<a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-pinterest"></i></a> -->
                 </div>
               </div>
             </div>
@@ -202,9 +206,10 @@
                 <a href="https://shopee.ph/jandra.ph" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                 <div class="hero__social">
                   <a href="https://www.facebook.com/Jandra.PH"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-pinterest"></i></a>
                   <a href="https://www.instagram.com/jandra.ph/?hl=en"><i class="fa fa-instagram"></i></a>
+                  <a href="https://shopee.ph/jandra.ph"><i class="fa fa-shopping-cart"></i></a>
+                  <!-- <<a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-pinterest"></i></a> -->
                 </div>
               </div>
             </div>
