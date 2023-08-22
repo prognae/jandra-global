@@ -286,8 +286,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <ul class="filter__controls">
-                            <li class="active" data-filter=".hot-sales">Best Sellers</li>
-                            <li data-filter=".new-arrivals">New Arrivals</li>
+                            {{-- <li data-filter=".hot-sales">Best Sellers</li> --}}
+                            <li class="active" data-filter=".new-arrivals">New Arrivals</li>
                         </ul>
                     </div>
                 </div>
@@ -320,7 +320,7 @@
                         </div>
                     @endforeach
                     
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
+                    {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="img/product/pproduct-2.png">
                                 <ul class="product__hover">
@@ -459,7 +459,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>

@@ -143,13 +143,27 @@
                             </div>
                           </div>
                           <span class="fw-semibold d-block mb-1">Jandra Products</span>
-                          <h3 class="card-title mb-2">10</h3>
+                          <h3 class="card-title mb-2">{{ $productCount }}</h3>
                         </div>
+                        
+                      </div>
+
+                      <div class="card" style="margin-top: 10px">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <img src="../assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
+                            </div>
+                          </div>
+                          <span class="fw-semibold d-block mb-1">Jandra Events</span>
+                          <h3 class="card-title mb-2">{{ $eventCount }}</h3>
+                        </div>
+                        
                       </div>
                     </div>
 
                     
-                    <div class="col-12 mb-4">
+                    {{-- <div class="col-12 mb-4">
                       <div class="card">
                         <div class="card-body">
                           <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
@@ -165,8 +179,9 @@
 
                           </div>
                         </div>
+                        
                       </div>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
               </div>

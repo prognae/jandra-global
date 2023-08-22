@@ -58,7 +58,10 @@ class AdminController extends Controller
     }
     */
     public function displayDashboard() {
-        return view('pages.new-admin.index');
+        $productCount = DB::table('public.products')->count();
+        $eventCount = DB::table('public.event')->count();
+        
+        return view('pages.new-admin.index', ['eventCount' => $eventCount, 'productCount' => $productCount]);
     }
 
     public function displayListItem() {
