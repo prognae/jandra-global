@@ -34,7 +34,7 @@ search.addEventListener('input', () => {
         },
         error: function (xhr, status, error) {
             // Handle AJAX errors if necessary
-            console.log(xhr.status + ': ' + xhr.statusText);
+            //console.log(xhr.status + ': ' + xhr.statusText);
         }
     });
 });

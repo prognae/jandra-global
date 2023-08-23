@@ -63,7 +63,7 @@
 @push('scripts')
     <script>
         var class = document.getElementById('homeLink').className
-        console.log('hello')
+        //console.log('hello')
     </script>
 @endpush
 
