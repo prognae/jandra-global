@@ -524,12 +524,12 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="instagram__pic">
-                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/iinstagram-1.png"></div>
-                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/iinstagram-2.png"></div>
-                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/iinstagram-4.png"></div>
-                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/iinstagram-3.png"></div>
-                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/iinstagram-5.png"></div>
-                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/iinstagram-6.png"></div>
+                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/5.png"></div>
+                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/6.png"></div>
+                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/3.png"></div>
+                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/2.png"></div>
+                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/1.png"></div>
+                            <div class="instagram__pic__item set-bg" data-setbg="img/instagram/4.png"></div>
                         </div>
                     </div>
                     <div class="col-lg-4">

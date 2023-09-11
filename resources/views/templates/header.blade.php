@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href="/"><img src="{{ asset('img/jjandra_logo.png') }}" alt="" style="width: 196px; height: 43px;"></a>
+                    <a href="/"><img src="{{ asset('img/jandra_logo2.png') }}" alt="" style="width: 300px; height: 90px;"></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
